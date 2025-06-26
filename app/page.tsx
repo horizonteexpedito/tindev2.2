@@ -1867,9 +1867,9 @@ export default function SigiloX() {
                       <div className="text-center">
                         <div className="mb-3">
                           <div className="text-2xl sm:text-3xl font-bold text-gray-400 line-through mb-1">$97.00</div>
-                          <div className="text-4xl sm:text-5xl font-bold text-[#FF0066] mb-2 sm:mb-3">$47.00</div>
+                          <div className="text-4xl sm:text-5xl font-bold text-[#FF0066] mb-2 sm:mb-3">$37.00</div>
                           <div className="inline-flex items-center gap-2 bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-bold">
-                            <span>🔥 51% OFF - LIMITED TIME</span>
+                            <span>🔥 61% OFF - LIMITED TIME</span>
                           </div>
                         </div>
                         <p className="text-sm sm:text-base text-gray-500 font-medium">
@@ -1901,7 +1901,7 @@ export default function SigiloX() {
 
                       {/* Submit Button */}
                       <Button
-                        onClick={() => window.open("https://global.mundpay.com/priyelxoql", "_blank")}
+                        onClick={() => window.open("https://global.mundpay.com/t1zvu", "_blank")}
                         className="w-full py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 touch-manipulation"
                       >
                         💳 UNLOCK WITH SECURE PAYMENT
