@@ -76,9 +76,7 @@ export default function EmergencyDownsellPage() {
         <Card className="border-orange-200 bg-orange-50">
           <CardContent className="p-6 text-center">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">🔥 LAST CHANCE SPECIAL OFFER</h2>
-            <p className="text-lg font-semibold text-orange-600 mb-4">
-              You were about to lose permanent access...
-            </p>
+            <p className="text-lg font-semibold text-orange-600 mb-4">You were about to lose permanent access...</p>
             <p className="text-gray-700 mb-6">
               Since you made it this far, we're making a special offer that will never be repeated.
             </p>
@@ -92,10 +90,10 @@ export default function EmergencyDownsellPage() {
               {/* Updated One-Click Downsell */}
               <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
                 <a href="javascript:void(0)" data-fornpay="ta7acpjusv" className="fornpay_btn">
-                  ✅ YES, I ACCEPT THIS OFFER
+                  SIM, EU ACEITO ESSA OFERTA
                 </a>
-                <a href="javascript:void(0)" data-downsell="null" className="fornpay_downsell">
-                  I will decline this offer
+                <a href="javascript:void(0)" data-downsell="/emergency2" className="fornpay_downsell">
+                  Vou recusar essa oferta
                 </a>
               </div>
             </div>
@@ -105,9 +103,7 @@ export default function EmergencyDownsellPage() {
         {/* What You're Missing */}
         <Card className="border-red-200 bg-red-50">
           <CardContent className="p-6">
-            <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">
-              ❌ What you're missing by refusing:
-            </h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-6 text-center">❌ What you're missing by refusing:</h3>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
                 <Camera className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
@@ -147,9 +143,7 @@ export default function EmergencyDownsellPage() {
               <p className="text-gray-700 mb-4">
                 After time runs out, you will never have access to this information again.
               </p>
-              <p className="text-red-600 font-semibold">
-                The data will be permanently deleted for privacy reasons.
-              </p>
+              <p className="text-red-600 font-semibold">The data will be permanently deleted for privacy reasons.</p>
             </div>
           </CardContent>
         </Card>
@@ -166,10 +160,10 @@ export default function EmergencyDownsellPage() {
             {/* Repeat the downsell offer */}
             <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
               <a href="javascript:void(0)" data-fornpay="ta7acpjusv" className="fornpay_btn">
-                🔓 YES, I WANT ACCESS FOR $27
+                SIM, EU ACEITO ESSA OFERTA
               </a>
-              <a href="javascript:void(0)" data-downsell="null" className="fornpay_downsell">
-                I will decline this offer
+              <a href="javascript:void(0)" data-downsell="/emergency2" className="fornpay_downsell">
+                Vou recusar essa oferta
               </a>
             </div>
           </CardContent>
@@ -212,7 +206,7 @@ export default function EmergencyDownsellPage() {
           color: #004faa;
           font-family: Arial;
           margin-top: 10px;
-          font-size: 16px;
+          font-size: 16px !important;
           font-weight: 100;
           text-decoration: none;
           display: block;

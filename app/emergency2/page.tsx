@@ -12,7 +12,16 @@ export default function Emergency2Page() {
       setTimeLeft((prev) => (prev > 0 ? prev - 1 : 0))
     }, 1000)
 
-    return () => clearInterval(timer)
+    // Load FornPay script
+    const script = document.createElement("script")
+    script.src = "https://app.mundpay.com/js/oneclick.js"
+    script.async = true
+    document.head.appendChild(script)
+
+    return () => {
+      clearInterval(timer)
+      document.head.removeChild(script)
+    }
   }, [])
 
   const formatTime = (seconds: number) => {
@@ -146,16 +155,12 @@ export default function Emergency2Page() {
 
             {/* One-Click Purchase Section */}
             <div className="text-center">
-              <div className="inline-block" style={{ width: "auto", maxWidth: "400px" }}>
+              <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
                 <a href="javascript:void(0)" data-fornpay="dmtih5m5io" className="fornpay_btn">
                   YES, I WANT TO SEE DELETED AND HIDE MESSAGES
                 </a>
-                <a
-                  href="javascript:void(0)"
-                  data-downsell="https://www.tindercheck.online/thanks"
-                  className="fornpay_downsell"
-                >
-                  No, I don’t care if my partner already deleted messages, audios or even photos to hide me.
+                <a href="javascript:void(0)" data-downsell="/thanks" className="fornpay_downsell">
+                  No, I don't care if my partner already deleted messages, audios or even photos to hide me.
                 </a>
               </div>
             </div>
@@ -182,43 +187,53 @@ export default function Emergency2Page() {
 
       {/* Styles for FornPay Integration */}
       <style jsx>{`
-        .fornpay_btn {
-          background: #3d94f6;
-          background-image: -webkit-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -moz-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -ms-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -o-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -webkit-gradient(to bottom, #3d94f6, #1e62d0);
-          -webkit-border-radius: 10px;
-          -moz-border-radius: 10px;
-          border-radius: 10px;
-          color: #fff;
-          font-family: Arial;
-          font-size: 18px;
-          font-weight: 100;
-          padding: 10px 20px;
-          border: 1px solid #337fed;
-          text-decoration: none;
-          display: block;
-          cursor: pointer;
-          text-align: center;
-        }
+  .fornpay_btn {
+    background: #3d94f6;
+    background-image: -webkit-linear-gradient(top, #3d94f6, #1e62d0);
+    background-image: -moz-linear-gradient(top, #3d94f6, #1e62d0);
+    background-image: -ms-linear-gradient(top, #3d94f6, #1e62d0);
+    background-image: -o-linear-gradient(top, #3d94f6, #1e62d0);
+    background-image: -webkit-gradient(to bottom, #3d94f6, #1e62d0);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: Arial;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 25px;
+    border: 1px solid #337fed;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+  }
 
-        .fornpay_downsell {
-          color: #004faa;
-          font-family: Arial;
-          margin-top: 10px;
-          font-size: 16px!important;
-          font-weight: 100;
-          text-decoration: none;
-          display: block;
-          cursor: pointer;
-          text-align: center;
-        }
-      `}</style>
+  .fornpay_btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(61, 148, 246, 0.3);
+  }
 
-      {/* FornPay Script */}
-      <script src="https://app.mundpay.com/js/oneclick.js"></script>
+  .fornpay_downsell {
+    color: #004faa;
+    font-family: Arial;
+    margin-top: 15px;
+    font-size: 16px !important;
+    font-weight: 100;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    text-align: center;
+    transition: color 0.3s ease;
+  }
+
+  .fornpay_downsell:hover {
+    color: #0066cc;
+    text-decoration: underline;
+  }
+`}</style>
     </div>
   )
 }
