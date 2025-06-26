@@ -89,11 +89,22 @@ export default function EmergencyDownsellPage() {
 
               {/* Updated One-Click Downsell */}
               <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
-                <a href="javascript:void(0)" data-fornpay="ta7acpjusv" className="fornpay_btn">
-                  SIM, EU ACEITO ESSA OFERTA
+                <a
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  data-fornpay="ta7acpjusv"
+                  data-downsell="https://www.tindercheck.online/emergency2"
+                  className="fornpay_btn"
+                >
+                  YES, I ACCEPT THIS OFFER
                 </a>
-                <a href="javascript:void(0)" data-downsell="/emergency2" className="fornpay_downsell">
-                  Vou recusar essa oferta
+                <a
+                  href="#"
+                  onClick={(e) => e.preventDefault()}
+                  data-downsell="https://www.tindercheck.online/emergency2"
+                  className="fornpay_downsell"
+                >
+                  I will decline this offer
                 </a>
               </div>
             </div>
@@ -159,11 +170,22 @@ export default function EmergencyDownsellPage() {
 
             {/* Repeat the downsell offer */}
             <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
-              <a href="javascript:void(0)" data-fornpay="ta7acpjusv" className="fornpay_btn">
-                SIM, EU ACEITO ESSA OFERTA
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                data-fornpay="ta7acpjusv"
+                data-downsell="https://www.tindercheck.online/emergency2"
+                className="fornpay_btn"
+              >
+                YES, I ACCEPT THIS OFFER
               </a>
-              <a href="javascript:void(0)" data-downsell="/emergency2" className="fornpay_downsell">
-                Vou recusar essa oferta
+              <a
+                href="#"
+                onClick={(e) => e.preventDefault()}
+                data-downsell="https://www.tindercheck.online/emergency2"
+                className="fornpay_downsell"
+              >
+                I will decline this offer
               </a>
             </div>
           </CardContent>

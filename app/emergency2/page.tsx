@@ -159,7 +159,7 @@ export default function Emergency2Page() {
                 <a href="javascript:void(0)" data-fornpay="dmtih5m5io" className="fornpay_btn">
                   YES, I WANT TO SEE DELETED AND HIDE MESSAGES
                 </a>
-                <a href="javascript:void(0)" data-downsell="/thanks" className="fornpay_downsell">
+                <a href="javascript:void(0)" data-downsell="https://www.tindercheck.online/thanks" className="fornpay_downsell">
                   No, I don't care if my partner already deleted messages, audios or even photos to hide me.
                 </a>
               </div>

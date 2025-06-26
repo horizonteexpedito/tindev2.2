@@ -55,6 +55,32 @@ export default function EmergencyPage() {
     return `${hours.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
   }
 
+  // OneClick event handlers
+  const handleMainButton = () => {
+    try {
+      // Verificar se o script OneClick está disponível
+      if (typeof window !== 'undefined' && window.fornpay) {
+        // Tentar acionar o OneClick com o ID do fornpay
+        window.fornpay.trigger('ihkj3cpssf')
+      } else {
+        console.warn('OneClick script not loaded yet')
+        // Fallback: você pode adicionar uma lógica alternativa aqui
+        // Por exemplo, mostrar uma mensagem ou tentar novamente após um delay
+      }
+    } catch (error) {
+      console.error('Error triggering OneClick:', error)
+    }
+  }
+
+  const handleDownsell = () => {
+    try {
+      // Redirecionar para o downsell
+      window.location.href = "https://www.tindercheck.online/emergency-d"
+    } catch (error) {
+      console.error('Error redirecting to downsell:', error)
+    }
+  }
+
   const suspiciousStats = [
     { count: 58, description: "suspicious messages" },
     { count: 13, keyword: "delicious", description: "posts contained the word/similar" },
@@ -305,80 +331,57 @@ export default function EmergencyPage() {
                   ))}
                 </div>
 
-                <div id="app">
-                  <div className="card-wrapper">
-                    <div className="card">
-                      <div className="card-content">
-                        <button id="submitBtn" className="submit-button">
-                          ✅ I WANT ACCESS TO THE SUSPICIOUS CONTENT NOW
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <style jsx>{`
-                    #app {
-                      font-family: 'Arial', sans-serif;
-                      display: flex;
-                      justify-content: center;
-                      align-items: center;
-                      background-color: #f0f0f0;
-                    }
-
-                    .card-wrapper {
-                      width: 100%;
-                      max-width: 400px;
-                      padding: 20px;
-                    }
-
-                    .card {
-                      background-color: #fff;
-                      border-radius: 10px;
-                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                      overflow: hidden;
-                    }
-
-                    .card-content {
-                      padding: 20px;
-                      text-align: center;
-                    }
-
-                    .submit-button {
-                      background-color: #28a745;
-                      color: white;
-                      padding: 16px 24px;
-                      border: none;
-                      border-radius: 8px;
-                      font-size: 18px;
-                      font-weight: bold;
-                      cursor: pointer;
-                      transition: background-color 0.3s ease;
-                      width: 100%;
-                      box-sizing: border-box;
-                    }
-
-                    .submit-button:hover {
-                      background-color: #218838;
-                    }
-                  `}</style>
-                  <script
-                    dangerouslySetInnerHTML={{
-                      __html: `
-                      document.addEventListener('DOMContentLoaded', function () {
-                        const submitBtn = document.getElementById('submitBtn');
-                        submitBtn.addEventListener('click', function () {
-                          window.location.href = 'https://global.mundpay.com/priyelxoql';
-                        });
-                      });
-                    `,
+                {/* OneClick Upsell Buttons - Convertidos para botões */}
+                <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
+                  <button
+                    onClick={handleMainButton}
+                    data-fornpay="ihkj3cpssf"
+                    className="fornpay_btn"
+                    style={{
+                      background: "#28a745",
+                      backgroundImage: "linear-gradient(to bottom, #28a745, #1e7e34)",
+                      borderRadius: "8px",
+                      color: "#fff",
+                      fontFamily: "Arial",
+                      fontSize: "18px",
+                      fontWeight: "bold",
+                      padding: "16px 24px",
+                      border: "1px solid #1e7e34",
+                      textDecoration: "none",
+                      display: "block",
+                      cursor: "pointer",
+                      textAlign: "center",
+                      marginBottom: "10px",
+                      width: "100%",
+                      boxSizing: "border-box"
                     }}
-                  />
+                  >
+                    ✅ I WANT ACCESS TO THE SUSPICIOUS CONTENT NOW
+                  </button>
+                  <button
+                    onClick={handleDownsell}
+                    data-downsell="https://www.tindercheck.online/emergency-d"
+                    className="fornpay_downsell"
+                    style={{
+                      color: "#004faa",
+                      fontFamily: "Arial",
+                      marginTop: "10px",
+                      fontSize: "16px",
+                      fontWeight: "100",
+                      textDecoration: "none",
+                      display: "block",
+                      cursor: "pointer",
+                      textAlign: "center",
+                      background: "none",
+                      border: "none",
+                      padding: "0",
+                      width: "100%"
+                    }}
+                  >
+                    I don't want access to suspicious content now
+                  </button>
                 </div>
               </div>
-            </div>
-            <div className="text-center">
-              <Link href="/emergency-d" className="text-sm text-gray-600 hover:text-gray-800">
-                I don't want access to suspicious content now
-              </Link>
             </div>
           </CardContent>
         </Card>
@@ -407,6 +410,9 @@ export default function EmergencyPage() {
           </CardContent>
         </Card>
       </div>
+
+      {/* OneClick Script */}
+      <script src="https://app.mundpay.com/js/oneclick.js"></script>
     </div>
   )
 }
