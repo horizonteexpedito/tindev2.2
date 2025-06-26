@@ -878,7 +878,7 @@ export default function SigiloX() {
                             </p>
                           </div>
                           <div className="flex items-center text-[#FFD700] text-sm sm:text-base gap-1">
-                            <span>⭐⭐⭐⭐⭐</span>
+                            <span>⭐�����⭐⭐⭐</span>
                           </div>
                         </div>
                       </div>

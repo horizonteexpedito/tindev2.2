@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { MapPin, Shield, CheckCircle, Camera, MessageCircle, Lock } from "lucide-react"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { useGeolocation } from "@/hooks/useGeolocation"
+import Link from "next/link"
 
 export default function EmergencyPage() {
   const [currentDateTime, setCurrentDateTime] = useState("")
@@ -31,7 +31,7 @@ export default function EmergencyPage() {
   // Get phone and photo from URL params or sessionStorage
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search)
-    const tel = urlParams.get("tel") || sessionStorage.getItem("phoneNumber") || "+1 (555) 123-4567"
+    const tel = urlParams.get("tel") || sessionStorage.getItem("phoneNumber") || "WhatsApp Research"
     const photo = urlParams.get("photo") || sessionStorage.getItem("profilePhoto")
 
     setPhoneNumber(tel)
@@ -305,13 +305,80 @@ export default function EmergencyPage() {
                   ))}
                 </div>
 
-                <Button
-                  onClick={() => window.open("https://global.mundpay.com/priyelxoql", "_blank")}
-                  className="w-full bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold py-4 text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-                >
-                  ✅ CLICK HERE TO GET 90% OFF
-                </Button>
+                <div id="app">
+                  <div className="card-wrapper">
+                    <div className="card">
+                      <div className="card-content">
+                        <button id="submitBtn" className="submit-button">
+                          ✅ I WANT ACCESS TO THE SUSPICIOUS CONTENT NOW
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <style jsx>{`
+                    #app {
+                      font-family: 'Arial', sans-serif;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      background-color: #f0f0f0;
+                    }
+
+                    .card-wrapper {
+                      width: 100%;
+                      max-width: 400px;
+                      padding: 20px;
+                    }
+
+                    .card {
+                      background-color: #fff;
+                      border-radius: 10px;
+                      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                      overflow: hidden;
+                    }
+
+                    .card-content {
+                      padding: 20px;
+                      text-align: center;
+                    }
+
+                    .submit-button {
+                      background-color: #28a745;
+                      color: white;
+                      padding: 16px 24px;
+                      border: none;
+                      border-radius: 8px;
+                      font-size: 18px;
+                      font-weight: bold;
+                      cursor: pointer;
+                      transition: background-color 0.3s ease;
+                      width: 100%;
+                      box-sizing: border-box;
+                    }
+
+                    .submit-button:hover {
+                      background-color: #218838;
+                    }
+                  `}</style>
+                  <script
+                    dangerouslySetInnerHTML={{
+                      __html: `
+                      document.addEventListener('DOMContentLoaded', function () {
+                        const submitBtn = document.getElementById('submitBtn');
+                        submitBtn.addEventListener('click', function () {
+                          window.location.href = 'https://global.mundpay.com/priyelxoql';
+                        });
+                      });
+                    `,
+                    }}
+                  />
+                </div>
               </div>
+            </div>
+            <div className="text-center">
+              <Link href="/emergency-d" className="text-sm text-gray-600 hover:text-gray-800">
+                I don't want access to suspicious content now
+              </Link>
             </div>
           </CardContent>
         </Card>
