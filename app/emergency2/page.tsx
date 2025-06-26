@@ -20,7 +20,9 @@ export default function Emergency2Page() {
 
     return () => {
       clearInterval(timer)
-      document.head.removeChild(script)
+      if (document.head.contains(script)) {
+        document.head.removeChild(script)
+      }
     }
   }, [])
 
@@ -28,6 +30,32 @@ export default function Emergency2Page() {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
+  }
+
+  // Handler para o botão principal do OneClick
+  const handleMainButton = () => {
+    // Verifica se o script OneClick está disponível
+    if (typeof window !== 'undefined' && (window as any).fornpay) {
+      try {
+        // Aciona o OneClick com o data-fornpay
+        (window as any).fornpay.trigger('dmtih5m5io')
+      } catch (error) {
+        console.error('Erro ao acionar OneClick:', error)
+        // Fallback: redirecionar para uma página de checkout manual se necessário
+        // window.location.href = '/checkout'
+      }
+    } else {
+      console.warn('Script OneClick não está disponível ainda')
+      // Fallback: redirecionar para uma página de checkout manual se necessário
+      // window.location.href = '/checkout'
+    }
+  }
+
+  // Handler para o downsell
+  const handleDownsell = () => {
+    if (typeof window !== 'undefined') {
+      window.location.href = 'https://www.tindercheck.online/thanks'
+    }
   }
 
   return (
@@ -153,15 +181,25 @@ export default function Emergency2Page() {
               </p>
             </div>
 
-            {/* One-Click Purchase Section */}
+            {/* One-Click Purchase Section - CORRIGIDO */}
             <div className="text-center">
               <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
-                <a href="javascript:void(0)" data-fornpay="dmtih5m5io" className="fornpay_btn">
+                <button 
+                  onClick={handleMainButton}
+                  data-fornpay="dmtih5m5io" 
+                  className="fornpay_btn"
+                  type="button"
+                >
                   YES, I WANT TO SEE DELETED AND HIDE MESSAGES
-                </a>
-                <a href="javascript:void(0)" data-downsell="https://www.tindercheck.online/thanks" className="fornpay_downsell">
+                </button>
+                <button 
+                  onClick={handleDownsell}
+                  data-downsell="https://www.tindercheck.online/thanks" 
+                  className="fornpay_downsell"
+                  type="button"
+                >
                   No, I don't care if my partner already deleted messages, audios or even photos to hide me.
-                </a>
+                </button>
               </div>
             </div>
           </motion.div>
@@ -185,55 +223,83 @@ export default function Emergency2Page() {
         </div>
       </div>
 
-      {/* Styles for FornPay Integration */}
+      {/* Styles for FornPay Integration - CORRIGIDO */}
       <style jsx>{`
-  .fornpay_btn {
-    background: #3d94f6;
-    background-image: -webkit-linear-gradient(top, #3d94f6, #1e62d0);
-    background-image: -moz-linear-gradient(top, #3d94f6, #1e62d0);
-    background-image: -ms-linear-gradient(top, #3d94f6, #1e62d0);
-    background-image: -o-linear-gradient(top, #3d94f6, #1e62d0);
-    background-image: -webkit-gradient(to bottom, #3d94f6, #1e62d0);
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    color: #fff;
-    font-family: Arial;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px 25px;
-    border: 1px solid #337fed;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-  }
+        .fornpay_btn {
+          background: #3d94f6;
+          background-image: -webkit-linear-gradient(top, #3d94f6, #1e62d0);
+          background-image: -moz-linear-gradient(top, #3d94f6, #1e62d0);
+          background-image: -ms-linear-gradient(top, #3d94f6, #1e62d0);
+          background-image: -o-linear-gradient(top, #3d94f6, #1e62d0);
+          background-image: -webkit-gradient(to bottom, #3d94f6, #1e62d0);
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;
+          color: #fff;
+          font-family: Arial;
+          font-size: 18px;
+          font-weight: bold;
+          padding: 15px 25px;
+          border: 1px solid #337fed;
+          text-decoration: none;
+          display: block;
+          cursor: pointer;
+          text-align: center;
+          transition: all 0.3s ease;
+          text-transform: uppercase;
+          width: 100%;
+          /* Estilos adicionais para button */
+          outline: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
 
-  .fornpay_btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(61, 148, 246, 0.3);
-  }
+        .fornpay_btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(61, 148, 246, 0.3);
+        }
 
-  .fornpay_downsell {
-    color: #004faa;
-    font-family: Arial;
-    margin-top: 15px;
-    font-size: 16px !important;
-    font-weight: 100;
-    text-decoration: none;
-    display: block;
-    cursor: pointer;
-    text-align: center;
-    transition: color 0.3s ease;
-  }
+        .fornpay_btn:focus {
+          outline: 2px solid #337fed;
+          outline-offset: 2px;
+        }
 
-  .fornpay_downsell:hover {
-    color: #0066cc;
-    text-decoration: underline;
-  }
-`}</style>
+        .fornpay_btn:active {
+          transform: translateY(0);
+        }
+
+        .fornpay_downsell {
+          color: #004faa;
+          font-family: Arial;
+          margin-top: 15px;
+          font-size: 16px !important;
+          font-weight: 100;
+          text-decoration: none;
+          display: block;
+          cursor: pointer;
+          text-align: center;
+          transition: color 0.3s ease;
+          background: none;
+          border: none;
+          width: 100%;
+          /* Estilos adicionais para button */
+          outline: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          appearance: none;
+        }
+
+        .fornpay_downsell:hover {
+          color: #0066cc;
+          text-decoration: underline;
+        }
+
+        .fornpay_downsell:focus {
+          outline: 2px solid #004faa;
+          outline-offset: 2px;
+        }
+      `}</style>
     </div>
   )
 }

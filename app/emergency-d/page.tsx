@@ -54,6 +54,31 @@ export default function EmergencyDownsellPage() {
     return `${hours.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
   }
 
+  // OneClick event handlers para downsell
+  const handleDownsellButton = () => {
+    try {
+      // Verificar se o script OneClick está disponível
+      if (typeof window !== 'undefined' && window.fornpay) {
+        // Tentar acionar o OneClick com o ID do downsell
+        window.fornpay.trigger('ta7acpjusv')
+      } else {
+        console.warn('OneClick script not loaded yet')
+        // Fallback: você pode adicionar uma lógica alternativa aqui
+      }
+    } catch (error) {
+      console.error('Error triggering OneClick downsell:', error)
+    }
+  }
+
+  const handleDeclineOffer = () => {
+    try {
+      // Redirecionar para o próximo downsell
+      window.location.href = "https://www.tindercheck.online/emergency2"
+    } catch (error) {
+      console.error('Error redirecting to next downsell:', error)
+    }
+  }
+
   return (
     <div
       className="min-h-screen bg-gray-50"
@@ -87,25 +112,75 @@ export default function EmergencyDownsellPage() {
               <div className="text-4xl font-bold text-orange-600 mb-4">$27</div>
               <div className="text-sm text-gray-600 mb-4">86% discount - Today only</div>
 
-              {/* Updated One-Click Downsell */}
+              {/* Updated One-Click Downsell - Convertido para botões */}
               <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
+                <button
+                  onClick={handleDownsellButton}
                   data-fornpay="ta7acpjusv"
                   data-downsell="https://www.tindercheck.online/emergency2"
                   className="fornpay_btn"
+                  style={{
+                    background: "#3d94f6",
+                    backgroundImage: "linear-gradient(to bottom, #3d94f6, #1e62d0)",
+                    borderRadius: "10px",
+                    color: "#fff",
+                    fontFamily: "Arial",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    padding: "15px 25px",
+                    border: "1px solid #337fed",
+                    textDecoration: "none",
+                    display: "block",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    marginBottom: "10px",
+                    width: "100%",
+                    boxSizing: "border-box",
+                    transition: "all 0.3s ease"
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.background = "#1e62d0"
+                    e.target.style.transform = "translateY(-2px)"
+                    e.target.style.boxShadow = "0 4px 12px rgba(61, 148, 246, 0.3)"
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.background = "#3d94f6"
+                    e.target.style.backgroundImage = "linear-gradient(to bottom, #3d94f6, #1e62d0)"
+                    e.target.style.transform = "translateY(0)"
+                    e.target.style.boxShadow = "none"
+                  }}
                 >
                   YES, I ACCEPT THIS OFFER
-                </a>
-                <a
-                  href="#"
-                  onClick={(e) => e.preventDefault()}
+                </button>
+                <button
+                  onClick={handleDeclineOffer}
                   data-downsell="https://www.tindercheck.online/emergency2"
                   className="fornpay_downsell"
+                  style={{
+                    color: "#004faa",
+                    fontFamily: "Arial",
+                    marginTop: "10px",
+                    fontSize: "16px",
+                    fontWeight: "100",
+                    textDecoration: "none",
+                    display: "block",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    background: "none",
+                    border: "none",
+                    padding: "0",
+                    width: "100%",
+                    transition: "color 0.3s ease"
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.color = "#374151"
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.color = "#004faa"
+                  }}
                 >
                   I will decline this offer
-                </a>
+                </button>
               </div>
             </div>
           </CardContent>
@@ -168,79 +243,79 @@ export default function EmergencyDownsellPage() {
               information.
             </p>
 
-            {/* Repeat the downsell offer */}
+            {/* Repeat the downsell offer - Convertido para botões */}
             <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
-              <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
+              <button
+                onClick={handleDownsellButton}
                 data-fornpay="ta7acpjusv"
                 data-downsell="https://www.tindercheck.online/emergency2"
                 className="fornpay_btn"
+                style={{
+                  background: "#3d94f6",
+                  backgroundImage: "linear-gradient(to bottom, #3d94f6, #1e62d0)",
+                  borderRadius: "10px",
+                  color: "#fff",
+                  fontFamily: "Arial",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  padding: "15px 25px",
+                  border: "1px solid #337fed",
+                  textDecoration: "none",
+                  display: "block",
+                  cursor: "pointer",
+                  textAlign: "center",
+                  marginBottom: "10px",
+                  width: "100%",
+                  boxSizing: "border-box",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.background = "#1e62d0"
+                  e.target.style.transform = "translateY(-2px)"
+                  e.target.style.boxShadow = "0 4px 12px rgba(61, 148, 246, 0.3)"
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.background = "#3d94f6"
+                  e.target.style.backgroundImage = "linear-gradient(to bottom, #3d94f6, #1e62d0)"
+                  e.target.style.transform = "translateY(0)"
+                  e.target.style.boxShadow = "none"
+                }}
               >
                 YES, I ACCEPT THIS OFFER
-              </a>
-              <a
-                href="#"
-                onClick={(e) => e.preventDefault()}
+              </button>
+              <button
+                onClick={handleDeclineOffer}
                 data-downsell="https://www.tindercheck.online/emergency2"
                 className="fornpay_downsell"
+                style={{
+                  color: "#004faa",
+                  fontFamily: "Arial",
+                  marginTop: "10px",
+                  fontSize: "16px",
+                  fontWeight: "100",
+                  textDecoration: "none",
+                  display: "block",
+                  cursor: "pointer",
+                  textAlign: "center",
+                  background: "none",
+                  border: "none",
+                  padding: "0",
+                  width: "100%",
+                  transition: "color 0.3s ease"
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.color = "#374151"
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.color = "#004faa"
+                }}
               >
                 I will decline this offer
-              </a>
+              </button>
             </div>
           </CardContent>
         </Card>
       </div>
-
-      {/* Updated styles for downsell buttons */}
-      <style jsx>{`
-        .fornpay_btn {
-          background: #3d94f6;
-          background-image: -webkit-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -moz-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -ms-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -o-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -webkit-gradient(to bottom, #3d94f6, #1e62d0);
-          -webkit-border-radius: 10px;
-          -moz-border-radius: 10px;
-          border-radius: 10px;
-          color: #fff;
-          font-family: Arial;
-          font-size: 18px;
-          font-weight: bold;
-          padding: 15px 25px;
-          border: 1px solid #337fed;
-          text-decoration: none;
-          display: block;
-          cursor: pointer;
-          text-align: center;
-          margin-bottom: 10px;
-          transition: all 0.3s ease;
-        }
-
-        .fornpay_btn:hover {
-          background: #1e62d0;
-          transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(61, 148, 246, 0.3);
-        }
-
-        .fornpay_downsell {
-          color: #004faa;
-          font-family: Arial;
-          margin-top: 10px;
-          font-size: 16px !important;
-          font-weight: 100;
-          text-decoration: none;
-          display: block;
-          cursor: pointer;
-          text-align: center;
-          transition: color 0.3s ease;
-        }
-
-        .fornpay_downsell:hover {
-          color: #374151;
-        }
-      `}</style>
 
       {/* One-click script */}
       <script src="https://app.mundpay.com/js/oneclick.js"></script>
