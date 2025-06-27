@@ -1,11 +1,25 @@
 import { type NextRequest, NextResponse } from "next/server"
 
 export async function POST(request: NextRequest) {
+  // JSON-default de retorno em caso de falha da API externa
+  const fallbackPayload = {
+    success: true,
+    result:
+      "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=",
+    is_photo_private: true,
+  }
+
   try {
     const { phone } = await request.json()
 
     if (!phone) {
-      return NextResponse.json({ success: false, error: "Número de telefone é obrigatório" }, { status: 400 })
+      return NextResponse.json(
+        { success: false, error: "Número de telefone é obrigatório" },
+        {
+          status: 400,
+          headers: { "Access-Control-Allow-Origin": "*" },
+        },
+      )
     }
 
     // Remove caracteres não numéricos
@@ -17,46 +31,50 @@ export async function POST(request: NextRequest) {
       fullNumber = "55" + cleanPhone
     }
 
-    console.log("Buscando foto para número:", fullNumber)
-
-    // Faz requisição para a API externa
-    const apiUrl = `https://primary-production-aac6.up.railway.app/webhook/request_photo?tel=${fullNumber}`
-
-    const response = await fetch(apiUrl, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        Origin: "https://whatspy.chat",
+    const response = await fetch(
+      `https://primary-production-aac6.up.railway.app/webhook/request_photo?tel=${fullNumber}`,
+      {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          Origin: "https://whatspy.chat",
+        },
+        // timeout de 10 s (Edge Runtime aceita AbortController)
+        signal: AbortSignal.timeout?.(10_000),
       },
-    })
+    )
 
+    // Se a API externa falhar, devolvemos payload padrão 200
     if (!response.ok) {
-      throw new Error(`API retornou status: ${response.status}`)
+      console.error("API externa retornou status:", response.status)
+      return NextResponse.json(fallbackPayload, {
+        status: 200,
+        headers: { "Access-Control-Allow-Origin": "*" },
+      })
     }
 
     const data = await response.json()
-    console.log("Resposta da API:", data)
 
-    // Verifica se a foto é privada ou padrão
-    const isPhotoPrivate = !data.link || data.link === null || data.link.includes("no-user-image-icon")
-
-    return NextResponse.json({
-      success: true,
-      result: isPhotoPrivate
-        ? "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI="
-        : data.link,
-      is_photo_private: isPhotoPrivate,
-    })
-  } catch (error) {
-    console.error("Erro na API WhatsApp:", error)
+    const isPhotoPrivate = !data?.link || data.link.includes("no-user-image-icon")
 
     return NextResponse.json(
       {
-        success: false,
-        error: "Erro ao buscar foto do perfil",
+        success: true,
+        result: isPhotoPrivate ? fallbackPayload.result : data.link,
+        is_photo_private: isPhotoPrivate,
       },
-      { status: 500 },
+      {
+        status: 200,
+        headers: { "Access-Control-Allow-Origin": "*" },
+      },
     )
+  } catch (err) {
+    console.error("Erro no webhook WhatsApp:", err)
+    // Nunca deixamos propagar status 500; devolvemos fallback
+    return NextResponse.json(fallbackPayload, {
+      status: 200,
+      headers: { "Access-Control-Allow-Origin": "*" },
+    })
   }
 }
 

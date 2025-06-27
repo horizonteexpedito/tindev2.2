@@ -33,12 +33,12 @@ const SalesProofPopup = ({ show, onClose }: { show: boolean; onClose: () => void
   const [currentMessage, setCurrentMessage] = useState("")
 
   const salesMessages = [
-    "✅ Anna, near you, unlocked a report 3 minutes ago",
-    "✅ Charles, recently, viewed conversation history",
-    "✅ Amanda just released confidential photos",
-    "✅ Luke completed a full analysis right now",
-    "✅ Felicity gained access to the confidential report moments ago",
-    "✅ John performed a complete verification right now",
+    "✅ Jessica from Austin unlocked a report 12 minutes ago",
+    "✅ Sarah recently viewed conversation history",
+    "✅ Michelle just accessed confidential photos",
+    "✅ Jennifer completed a full analysis right now",
+    "✅ Ashley gained access to the confidential report moments ago",
+    "✅ Rachel performed a complete verification right now",
   ]
 
   useEffect(() => {
@@ -258,14 +258,14 @@ export default function SigiloX() {
   useEffect(() => {
     if (currentStep === "verification") {
       const messages = [
-        { progress: 0, message: "Connecting to Tinder servers..." },
-        { progress: 15, message: "Accessing profile information..." },
-        { progress: 30, message: "Decrypting activity data..." },
-        { progress: 45, message: "Locating geographic coordinates..." },
-        { progress: 60, message: "Cross-referencing with global records..." },
-        { progress: 75, message: "Analyzing behavior patterns..." },
-        { progress: 90, message: "Compiling confidential information..." },
-        { progress: 100, message: "Preliminary analysis completed!" },
+        { progress: 0, message: "Checking Tinder activity in your area..." },
+        { progress: 15, message: "Cross-referencing facial recognition data..." },
+        { progress: 30, message: "Analyzing recent login patterns..." },
+        { progress: 45, message: "Scanning Bumble, Hinge, and other platforms..." },
+        { progress: 60, message: "Detecting suspicious location activity..." },
+        { progress: 75, message: "Compiling confidential evidence..." },
+        { progress: 90, message: "Almost there - finalizing your report..." },
+        { progress: 100, message: "Investigation completed successfully!" },
       ]
 
       const interval = setInterval(() => {
@@ -454,12 +454,12 @@ export default function SigiloX() {
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
   }
 
-  // Funções do carrossel
+  // Updated blocked images with new chat screenshots
   const blockedImages = [
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20jun.%20de%202025%2C%2013_13_25-pmZr6jZA37litzPJj8wNrpnkp0rvw7.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20jun.%20de%202025%2C%2013_00_31-dvWrjTNfk1GBf9V0QzQ1AkwSwyLJtc.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20jun.%20de%202025%2C%2013_07_30-yxXklpz3bQ3P5v6vrD3e0vfNJM8qay.png",
-    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20jun.%20de%202025%2C%2013_09_25-0Fi38oBqj5XfdYiVY73fUzmlAvv7N5.png",
+    "https://i.ibb.co/PZmmjcxb/CHAT1.png",
+    "https://i.ibb.co/20581vtC/CHAT2.png",
+    "https://i.ibb.co/LzFZdXXH/CHAT3.png",
+    "https://i.ibb.co/kvWFRct/CHAT4.png",
   ]
 
   const nextSlide = () => {
@@ -654,10 +654,10 @@ export default function SigiloX() {
                     transition={{ delay: 0.2 }}
                     className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-4 px-2 leading-tight"
                   >
-                    They said they don't use Tinder anymore…
+                    That Gut Feeling Won't Go Away...
                     <br />
                     <span className="text-[#FF3B30] text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold">
-                      Really?
+                      And You're Right to Trust It
                     </span>
                   </motion.h1>
                   <motion.p
@@ -666,7 +666,8 @@ export default function SigiloX() {
                     transition={{ delay: 0.4 }}
                     className="text-[#CCCCCC] mb-6 text-base sm:text-lg md:text-xl px-4 max-w-3xl mx-auto font-medium"
                   >
-                    Dating app tracking technology. 100% confidential.
+                    Stop losing sleep wondering if they're still swiping. Get the answers you need - completely
+                    anonymously.
                   </motion.p>
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
@@ -675,7 +676,7 @@ export default function SigiloX() {
                     className="inline-flex items-center gap-2 bg-green-600/20 text-green-300 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm mt-4 border border-green-500/30"
                   >
                     <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span className="font-medium">System Updated - June 2025</span>
+                    <span className="font-medium">Advanced Detection System - Updated June 2025</span>
                   </motion.div>
                 </div>
 
@@ -688,20 +689,26 @@ export default function SigiloX() {
                 >
                   <div className="flex items-center gap-3 sm:gap-4 bg-white/10 backdrop-blur-sm text-white px-4 sm:px-6 py-3 sm:py-4 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
                     <Activity className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#00FF99]" />
-                    <span className="font-semibold text-sm sm:text-base">✅ RECENT ACTIVITY ANALYSIS</span>
+                    <span className="font-semibold text-sm sm:text-base">
+                      ✅ See their last login (even when they say they're 'done' with apps)
+                    </span>
                   </div>
                   <div className="flex items-center gap-3 sm:gap-4 bg-white/10 backdrop-blur-sm text-white px-4 sm:px-6 py-3 sm:py-4 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
                     <MapPin className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#00FF99]" />
-                    <span className="font-semibold text-sm sm:text-base">✅ SUSPICIOUS LOGIN LOCATIONS</span>
+                    <span className="font-semibold text-sm sm:text-base">
+                      ✅ Discover where they're really swiping from
+                    </span>
                   </div>
                   <div className="flex items-center gap-3 sm:gap-4 bg-white/10 backdrop-blur-sm text-white px-4 sm:px-6 py-3 sm:py-4 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
                     <Eye className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#00FF99]" />
-                    <span className="font-semibold text-sm sm:text-base">✅ RECENT PHOTOS AND CONVERSATIONS</span>
+                    <span className="font-semibold text-sm sm:text-base">
+                      ✅ Access the conversations they don't want you to see
+                    </span>
                   </div>
                   <div className="flex items-center gap-3 sm:gap-4 bg-white/10 backdrop-blur-sm text-white px-4 sm:px-6 py-3 sm:py-4 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300">
                     <Shield className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 text-[#00FF99]" />
                     <span className="font-semibold text-sm sm:text-base">
-                      ✅ 100% CONFIDENTIAL - THEY'LL NEVER KNOW
+                      ✅ Your investigation stays completely private
                     </span>
                   </div>
                 </motion.div>
@@ -717,10 +724,10 @@ export default function SigiloX() {
                     onClick={() => setCurrentStep("form")}
                     className="bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-4 sm:py-6 px-8 sm:px-12 text-base sm:text-lg rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 w-full max-w-md touch-manipulation"
                   >
-                    🚨 START CONFIDENTIAL DETECTION
+                    🔍 GET THE TRUTH - START ANONYMOUS SEARCH
                   </Button>
                   <p className="text-sm text-gray-300 mt-4 font-medium">
-                    Real-time technology. Total secrecy guaranteed.
+                    100% anonymous investigation. They'll never know you checked.
                   </p>
                 </motion.div>
               </div>
@@ -729,13 +736,16 @@ export default function SigiloX() {
               <div className="bg-white py-12 sm:py-16">
                 <div className="container mx-auto px-4">
                   <div className="text-center mb-8 sm:mb-12">
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#333333] mb-2">WHAT YOU'LL</h2>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF0066] to-[#FF3333] mb-2">
-                      DISCOVER ABOUT YOUR
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#333333] mb-4">
+                      You're Not Paranoid -
+                    </h2>
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF0066] to-[#FF3333] mb-6">
+                      You're Protecting Yourself
                     </h3>
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#FF0066] to-[#FF3333]">
-                      PARTNER
-                    </h3>
+                    <p className="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+                      Stop second-guessing your instincts. Get the clarity you need to make informed decisions about
+                      your relationship.
+                    </p>
                   </div>
 
                   <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 max-w-4xl mx-auto mb-8 sm:mb-12">
@@ -744,53 +754,52 @@ export default function SigiloX() {
                         <Heart className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" />
                       </div>
                       <h4 className="font-bold text-[#333333] mb-2 text-sm sm:text-base">RECENT ACTIVITY</h4>
-                      <p className="text-xs sm:text-sm text-gray-600">See when they last used Tinder</p>
+                      <p className="text-xs sm:text-sm text-gray-600">See when they last used dating apps</p>
                     </div>
                     <div className="text-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                       <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-100 to-purple-200 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                         <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-purple-500" />
                       </div>
                       <h4 className="font-bold text-[#333333] mb-2 text-sm sm:text-base">EXACT LOCATION</h4>
-                      <p className="text-xs sm:text-sm text-gray-600">Where they're scheduling the most dates</p>
+                      <p className="text-xs sm:text-sm text-gray-600">Where they've been swiping</p>
                     </div>
                     <div className="text-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                       <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-red-100 to-red-200 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                         <Camera className="w-6 h-6 sm:w-8 sm:h-8 text-red-500" />
                       </div>
-                      <h4 className="font-bold text-[#333333] mb-2 text-sm sm:text-base">INTIMATE PHOTOS</h4>
-                      <p className="text-xs sm:text-sm text-gray-600">All the photos they're showing</p>
+                      <h4 className="font-bold text-[#333333] mb-2 text-sm sm:text-base">HIDDEN PHOTOS</h4>
+                      <p className="text-xs sm:text-sm text-gray-600">Photos they don't want you to see</p>
                     </div>
                     <div className="text-center p-4 sm:p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
                       <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4">
                         <MessageCircle className="w-6 h-6 sm:w-8 sm:h-8 text-orange-500" />
                       </div>
-                      <h4 className="font-bold text-[#333333] mb-2 text-sm sm:text-base">EXPLICIT CONVERSATIONS</h4>
-                      <p className="text-xs sm:text-sm text-gray-600">What they're saying to others</p>
+                      <h4 className="font-bold text-[#333333] mb-2 text-sm sm:text-base">PRIVATE CONVERSATIONS</h4>
+                      <p className="text-xs sm:text-sm text-gray-600">What they're really saying to others</p>
                     </div>
                   </div>
 
-                  {/* Testimonials Section - Mobile Optimized with Real Avatars */}
-                  {/* Testimonials Section - Enhanced Authenticity */}
+                  {/* Testimonials Section - Enhanced with validation focus */}
                   <div className="text-center mb-8 sm:mb-12">
                     <h3 className="text-lg sm:text-2xl md:text-3xl font-bold text-[#333333] mb-6 sm:mb-8 px-2">
-                      DON'T STAY IN DOUBT – SEE WHAT OTHERS DISCOVERED
+                      You're Not Alone - See What Others Discovered
                     </h3>
 
                     <div className="max-w-3xl mx-auto space-y-5 sm:space-y-6 mb-6 sm:mb-8">
-                      {/* Anna's Testimonial */}
+                      {/* Sarah's Testimonial */}
                       <div className="testimonial-card bg-white rounded-xl shadow-lg p-4 sm:p-5 flex items-start gap-4">
                         <img
                           src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                          alt="Foto de Anna"
+                          alt="Sarah's photo"
                           className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0 border-2 border-gray-200 shadow-sm"
                           onError={(e) => {
                             e.currentTarget.src =
-                              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                              "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                           }}
                         />
                         <div className="flex-1 min-w-0 text-left">
                           <div className="mb-2">
-                            <p className="font-bold text-[#333333] text-base sm:text-lg">Anna</p>
+                            <p className="font-bold text-[#333333] text-base sm:text-lg">Sarah, 32</p>
                             <p className="text-xs sm:text-sm text-green-600 font-medium">✓ Verified User</p>
                           </div>
                           <div className="mb-3">
@@ -802,8 +811,8 @@ export default function SigiloX() {
                               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
                             </svg>
                             <p className="text-[#444444] text-base sm:text-lg leading-relaxed font-normal">
-                              I thought he had uninstalled Tinder... But after the analysis, I saw he was still liking
-                              other women's profiles. It was a shock… But at least now I know the truth.
+                              I knew something was off. The report confirmed my worst fears, but at least now I could
+                              make an informed decision instead of living in constant anxiety.
                             </p>
                           </div>
                           <div className="flex items-center text-[#FFD700] text-sm sm:text-base gap-1">
@@ -812,21 +821,23 @@ export default function SigiloX() {
                         </div>
                       </div>
 
-                      {/* Charles's Testimonial */}
+                      {/* Jennifer's Testimonial */}
                       <div className="testimonial-card bg-white rounded-xl shadow-lg p-4 sm:p-5 flex items-start gap-4">
                         <img
-                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                          alt="Foto de Charles"
+                          src="https://images.unsplash.com/photo-1580489944761-15a19d654956?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d29tYW4lMjBwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D"
+                          alt="Jennifer's photo"
                           className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0 border-2 border-gray-200 shadow-sm"
                           onError={(e) => {
                             e.currentTarget.src =
-                              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                              "https://images.unsplash.com/photo-1580489944761-15a19d654956?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d29tYW4lMjBwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D"
                           }}
                         />
                         <div className="flex-1 min-w-0 text-left">
                           <div className="mb-2">
-                            <p className="font-bold text-[#333333] text-base sm:text-lg">Charles</p>
-                            <p className="text-xs sm:text-sm text-blue-600 font-medium">Analysis done in June 2025</p>
+                            <p className="font-bold text-[#333333] text-base sm:text-lg">Jennifer, 28</p>
+                            <p className="text-xs sm:text-sm text-blue-600 font-medium">
+                              Investigation completed June 2025
+                            </p>
                           </div>
                           <div className="mb-3">
                             <svg
@@ -837,8 +848,8 @@ export default function SigiloX() {
                               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
                             </svg>
                             <p className="text-[#444444] text-base sm:text-lg leading-relaxed font-normal">
-                              I was suspicious, but never had certainty... When I saw the report showing recent
-                              conversations, it hit me. I didn't want to believe it... But the data doesn't lie.
+                              Best $37 I ever spent. Saved me months of wondering and gave me the closure I needed. My
+                              instincts were right all along.
                             </p>
                           </div>
                           <div className="flex items-center text-[#FFD700] text-sm sm:text-base gap-1">
@@ -847,20 +858,20 @@ export default function SigiloX() {
                         </div>
                       </div>
 
-                      {/* Felicity's Testimonial */}
+                      {/* Michelle's Testimonial */}
                       <div className="testimonial-card bg-white rounded-xl shadow-lg p-4 sm:p-5 flex items-start gap-4">
                         <img
-                          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
-                          alt="Foto de Felicity"
+                          src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80"
+                          alt="Michelle's photo"
                           className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0 border-2 border-gray-200 shadow-sm"
                           onError={(e) => {
                             e.currentTarget.src =
-                              "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
+                              "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80"
                           }}
                         />
                         <div className="flex-1 min-w-0 text-left">
                           <div className="mb-2">
-                            <p className="font-bold text-[#333333] text-base sm:text-lg">Felicity</p>
+                            <p className="font-bold text-[#333333] text-base sm:text-lg">Michelle, 35</p>
                             <p className="text-xs sm:text-sm text-green-600 font-medium">✓ Verified User</p>
                           </div>
                           <div className="mb-3">
@@ -872,13 +883,12 @@ export default function SigiloX() {
                               <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h4v10h-10z" />
                             </svg>
                             <p className="text-[#444444] text-base sm:text-lg leading-relaxed font-normal">
-                              I always trusted him... Until I started noticing some changes. I did the analysis on
-                              impulse... And what I found left me speechless. But I'd rather know the truth than live in
-                              doubt.
+                              I felt guilty for checking, but my instincts were right. Now I can move on with confidence
+                              instead of living in doubt.
                             </p>
                           </div>
                           <div className="flex items-center text-[#FFD700] text-sm sm:text-base gap-1">
-                            <span>⭐�������⭐⭐⭐</span>
+                            <span>⭐⭐⭐⭐⭐</span>
                           </div>
                         </div>
                       </div>
@@ -889,7 +899,7 @@ export default function SigiloX() {
                       onClick={() => setCurrentStep("form")}
                       className="bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 text-base sm:text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full max-w-sm touch-manipulation"
                     >
-                      🔎 I WANT TO KNOW THE TRUTH
+                      🔍 START MY ANONYMOUS INVESTIGATION
                     </Button>
                   </div>
 
@@ -897,7 +907,7 @@ export default function SigiloX() {
                   <div className="text-center px-4">
                     <p className="text-xs text-gray-500 flex items-center justify-center gap-2 font-medium">
                       <Shield className="w-4 h-4" />
-                      100% confidential - they will NEVER know you checked
+                      100% anonymous - Your investigation stays completely private
                     </p>
                   </div>
                 </div>
@@ -945,11 +955,10 @@ export default function SigiloX() {
                       <Wifi className="w-8 h-8 sm:w-10 sm:h-10 text-[#6C63FF]" />
                     </div>
                     <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-                      📡 CONFIGURING SEARCH PARAMETERS
+                      🔍 Help Us Find What They're Hiding
                     </h1>
                     <p className="text-gray-200 text-sm sm:text-base px-4 leading-relaxed">
-                      To ensure accurate profile analysis, we need some technical information about the number to be
-                      verified:
+                      The more details you provide, the deeper we can dig. Everything stays 100% anonymous.
                     </p>
                   </div>
 
@@ -959,7 +968,7 @@ export default function SigiloX() {
                       {/* Photo Upload - Moved to first position */}
                       <div>
                         <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-3 sm:mb-4">
-                          Upload a photo for facial verification
+                          Upload Their Photo for Facial Recognition
                         </label>
                         <div className="text-center">
                           {uploadedPhoto ? (
@@ -989,14 +998,15 @@ export default function SigiloX() {
                           )}
                         </div>
                         <p className="text-xs sm:text-sm text-gray-500 mt-3 font-medium">
-                          Your image is processed only for visual verification and is never stored.
+                          We'll scan across all dating platforms to find matching profiles - even ones they think are
+                          hidden.
                         </p>
                       </div>
 
                       {/* Phone Number - Now second */}
                       <div>
                         <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-2 sm:mb-3">
-                          WhatsApp Number
+                          WhatsApp Number They Use
                         </label>
                         <div className="flex gap-2 sm:gap-3">
                           <div className="relative">
@@ -1018,277 +1028,215 @@ export default function SigiloX() {
                             </button>
 
                             {showCountryDropdown && (
-                              <div className="absolute top-full left-0 mt-1 w-72 sm:w-80 bg-white border border-gray-200 rounded-xl shadow-lg z-50 max-h-60 overflow-y-auto">
+                              <div className="absolute top-full left-0 mt-1 bg-white border rounded-xl shadow-lg z-50 w-80 max-h-60 overflow-y-auto">
                                 <div className="p-2">
                                   <input
                                     type="text"
-                                    placeholder="Search country or code..."
+                                    placeholder="Search country..."
                                     value={countrySearch}
                                     onChange={(e) => setCountrySearch(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    className="w-full px-3 py-2 border rounded-lg text-sm"
                                   />
                                 </div>
-                                <div className="max-h-48 overflow-y-auto">
-                                  {filteredCountries.map((country) => (
-                                    <button
-                                      key={country.code}
-                                      type="button"
-                                      onClick={() => {
-                                        setSelectedCountry(country)
-                                        setShowCountryDropdown(false)
-                                        setCountrySearch("")
-                                        // Update phone number with new country code
-                                        const cleanNumber = phoneNumber.replace(/^\+\d+/, "")
-                                        const newNumber = country.code + cleanNumber
-                                        handlePhoneChange(newNumber)
-                                      }}
-                                      className="w-full px-3 py-2 text-left hover:bg-gray-50 flex items-center gap-3 text-sm"
-                                    >
-                                      <span className="text-lg">{country.flag}</span>
-                                      <span className="font-medium">{country.code}</span>
-                                      <span className="text-gray-600 truncate">{country.name}</span>
-                                    </button>
-                                  ))}
-                                </div>
+                                {filteredCountries.map((country) => (
+                                  <button
+                                    key={country.code}
+                                    type="button"
+                                    onClick={() => {
+                                      setSelectedCountry(country)
+                                      setShowCountryDropdown(false)
+                                      setCountrySearch("")
+                                      // Update phone number with new country code
+                                      const currentNumber = phoneNumber.replace(/^\+\d+\s*/, "")
+                                      setPhoneNumber(country.code + " " + currentNumber)
+                                    }}
+                                    className="w-full px-3 py-2 text-left hover:bg-gray-100 flex items-center gap-3 text-sm"
+                                  >
+                                    <span className="text-lg">{country.flag}</span>
+                                    <span className="font-medium">{country.code}</span>
+                                    <span className="text-gray-600">{country.name}</span>
+                                  </button>
+                                ))}
                               </div>
                             )}
                           </div>
                           <Input
                             type="tel"
-                            placeholder={`Number (ex: ${selectedCountry.placeholder})`}
+                            placeholder={selectedCountry.placeholder}
                             value={phoneNumber}
-                            onChange={(e) => {
-                              const value = e.target.value
-                              // Auto-detect country code if user types it
-                              if (value.startsWith("+")) {
-                                const enteredCode = value.split(" ")[0]
-                                const matchedCountry = countries.find((c) => c.code === enteredCode)
-                                if (matchedCountry && matchedCountry.code !== selectedCountry.code) {
-                                  setSelectedCountry(matchedCountry)
-                                }
-                              }
-                              handlePhoneChange(value)
-                            }}
-                            className="flex-1 rounded-xl border-2 border-gray-200 focus:border-[#6C63FF] transition-colors duration-200 py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base"
+                            onChange={(e) => handlePhoneChange(e.target.value)}
+                            className="flex-1 py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base rounded-xl border-gray-300 focus:border-blue-500 focus:ring-blue-500"
                           />
                         </div>
                         <p className="text-xs sm:text-sm text-gray-500 mt-2 font-medium">
-                          Enter the number they use on WhatsApp
+                          This helps us track their device activity and cross-reference with dating app usage patterns.
                         </p>
-                      </div>
 
-                      {/* Photo Display */}
-                      <div>
-                        <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-2 sm:mb-3">
-                          Profile photo detected
-                        </label>
-                        <div className="text-center">
-                          {isLoadingPhoto ? (
-                            <div className="w-24 h-24 sm:w-28 sm:h-28 border-2 border-dashed border-gray-300 rounded-2xl flex items-center justify-center mx-auto">
-                              <div className="animate-spin rounded-full h-8 w-8 sm:h-10 sm:w-10 border-b-2 border-[#6C63FF]"></div>
-                            </div>
-                          ) : profilePhoto ? (
-                            <div className="relative inline-block">
-                              <img
-                                src={profilePhoto || "/placeholder.svg"}
-                                alt="Profile"
-                                className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-4 border-green-500 shadow-lg"
-                              />
-                              {isPhotoPrivate && (
-                                <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 w-6 h-6 sm:w-8 sm:h-8 bg-gray-500 text-white rounded-full flex items-center justify-center text-xs sm:text-sm shadow-lg">
-                                  🔒
-                                </div>
+                        {/* WhatsApp Photo Preview */}
+                        {(profilePhoto || isLoadingPhoto) && (
+                          <div className="mt-4 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                            <div className="flex items-center gap-3 sm:gap-4">
+                              {isLoadingPhoto ? (
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-200 rounded-xl animate-pulse" />
+                              ) : (
+                                <img
+                                  src={profilePhoto || "/placeholder.svg"}
+                                  alt="WhatsApp Profile"
+                                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl object-cover border-2 border-gray-200"
+                                />
                               )}
+                              <div className="flex-1">
+                                <p className="font-semibold text-[#333333] text-sm sm:text-base">
+                                  WhatsApp Profile Found
+                                </p>
+                                <p className="text-xs sm:text-sm text-gray-600">
+                                  {isPhotoPrivate ? "Private photo detected" : "Profile photo loaded"}
+                                </p>
+                              </div>
+                              <div className="w-3 h-3 sm:w-4 sm:h-4 bg-green-500 rounded-full" />
                             </div>
-                          ) : (
-                            <div className="w-24 h-24 sm:w-28 sm:h-28 border-2 border-dashed border-gray-300 rounded-2xl flex items-center justify-center mx-auto">
-                              <User className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
-                            </div>
-                          )}
-
-                          {photoError && (
-                            <p className="text-xs sm:text-sm text-red-500 mt-3 font-medium">{photoError}</p>
-                          )}
-
-                          {profilePhoto && !isLoadingPhoto && (
-                            <p className="text-xs sm:text-sm text-gray-500 mt-3 font-medium">
-                              {isPhotoPrivate ? "Private photo detected" : "Public photo found"}
-                            </p>
-                          )}
-                        </div>
+                          </div>
+                        )}
                       </div>
 
                       {/* Gender Selection */}
                       <div>
                         <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-3 sm:mb-4">
-                          Gender
+                          What gender are they?
                         </label>
                         <div className="grid grid-cols-3 gap-2 sm:gap-3">
                           {[
-                            { id: "masculino", label: "Male", icon: "👨", color: "blue" },
-                            { id: "feminino", label: "Female", icon: "👩", color: "pink" },
-                            { id: "nao-binario", label: "Non-Binary", icon: "👤", color: "purple" },
+                            { value: "masculino", label: "Male", icon: "👨" },
+                            { value: "feminino", label: "Female", icon: "👩" },
+                            { value: "nao-binario", label: "Non-binary", icon: "🧑" },
                           ].map((option) => (
                             <button
-                              key={option.id}
-                              onClick={() => setSelectedGender(option.id)}
-                              className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 hover:shadow-lg touch-manipulation ${
-                                selectedGender === option.id
-                                  ? `border-${option.color}-500 bg-${option.color}-50 shadow-lg`
-                                  : "border-gray-200 hover:border-gray-300 bg-white"
+                              key={option.value}
+                              type="button"
+                              onClick={() => setSelectedGender(option.value)}
+                              className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 text-center ${
+                                selectedGender === option.value
+                                  ? "border-blue-500 bg-blue-50 text-blue-700"
+                                  : "border-gray-200 hover:border-gray-300"
                               }`}
                             >
-                              <div className="text-xl sm:text-2xl mb-1 sm:mb-2">{option.icon}</div>
-                              <div className="text-xs sm:text-sm font-semibold">{option.label}</div>
+                              <div className="text-lg sm:text-xl mb-1 sm:mb-2">{option.icon}</div>
+                              <div className="text-xs sm:text-sm font-medium">{option.label}</div>
                             </button>
                           ))}
                         </div>
                       </div>
 
-                      {/* Last Tinder Use */}
+                      {/* Age Range */}
                       <div>
                         <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-3 sm:mb-4">
-                          Last time this person may have used Tinder:
-                        </label>
-                        <div className="space-y-2 sm:space-y-3">
-                          {[
-                            { id: "7-days", label: "In the last 7 days" },
-                            { id: "30-days", label: "In the last 30 days" },
-                            { id: "1-month", label: "More than 1 month" },
-                            { id: "not-sure", label: "I'm not sure" },
-                          ].map((option) => (
-                            <button
-                              key={option.id}
-                              onClick={() => setLastTinderUse(option.id)}
-                              className={`w-full p-3 sm:p-4 text-left rounded-xl border-2 transition-all duration-200 hover:shadow-lg touch-manipulation ${
-                                lastTinderUse === option.id
-                                  ? "border-blue-500 bg-blue-50 shadow-lg"
-                                  : "border-gray-200 hover:border-gray-300 bg-white"
-                              }`}
-                            >
-                              <div className="flex items-center gap-3">
-                                <div
-                                  className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full border-2 flex-shrink-0 transition-all duration-200 ${
-                                    lastTinderUse === option.id ? "bg-blue-500 border-blue-500" : "border-gray-300"
-                                  }`}
-                                />
-                                <span className="font-medium text-sm sm:text-base">{option.label}</span>
-                              </div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* City Change */}
-                      <div>
-                        <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-3 sm:mb-4">
-                          Did this person move cities recently?
-                        </label>
-                        <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                          {[
-                            { id: "yes", label: "Yes" },
-                            { id: "no", label: "No" },
-                            { id: "dont-know", label: "I don't know" },
-                          ].map((option) => (
-                            <button
-                              key={option.id}
-                              onClick={() => setCityChange(option.id)}
-                              className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 hover:shadow-lg touch-manipulation ${
-                                cityChange === option.id
-                                  ? "border-green-500 bg-green-50 shadow-lg"
-                                  : "border-gray-200 hover:border-gray-300 bg-white"
-                              }`}
-                            >
-                              <div className="font-semibold text-sm sm:text-base">{option.label}</div>
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Age Range Selection */}
-                      <div>
-                        <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-3 sm:mb-4">
-                          Age range of the person being checked:
+                          How Old Are They?
                         </label>
                         <div className="grid grid-cols-2 gap-2 sm:gap-3">
                           {[
-                            { id: "18-24", label: "18-24" },
-                            { id: "25-34", label: "25-34" },
-                            { id: "35-44", label: "35-44" },
-                            { id: "45-54", label: "45-54" },
+                            { value: "18-24", label: "18-24 years" },
+                            { value: "25-34", label: "25-34 years" },
+                            { value: "35-44", label: "35-44 years" },
+                            { value: "45-54", label: "45+ years" },
                           ].map((option) => (
                             <button
-                              key={option.id}
-                              onClick={() => setAgeRange(option.id)}
-                              className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 hover:shadow-lg touch-manipulation ${
-                                ageRange === option.id
-                                  ? "border-purple-500 bg-purple-50 shadow-lg"
-                                  : "border-gray-200 hover:border-gray-300 bg-white"
+                              key={option.value}
+                              type="button"
+                              onClick={() => setAgeRange(option.value)}
+                              className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 text-center ${
+                                ageRange === option.value
+                                  ? "border-blue-500 bg-blue-50 text-blue-700"
+                                  : "border-gray-200 hover:border-gray-300"
                               }`}
                             >
-                              <div className="font-semibold text-sm sm:text-base">{option.label}</div>
+                              <div className="text-xs sm:text-sm font-medium">{option.label}</div>
+                            </button>
+                          ))}
+                        </div>
+                        <p className="text-xs sm:text-sm text-gray-500 mt-2 font-medium">
+                          This helps us narrow down the search parameters across dating platforms.
+                        </p>
+                      </div>
+
+                      {/* Timeline Questions */}
+                      <div>
+                        <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-3 sm:mb-4">
+                          When Did You Start Suspecting?
+                        </label>
+                        <div className="space-y-2 sm:space-y-3">
+                          {[
+                            { value: "week", label: "Within the last week", desc: "(recent behavior changes)" },
+                            { value: "month", label: "Past month", desc: "(gradual distance/phone hiding)" },
+                            { value: "longer", label: "More than a month", desc: "(ongoing gut feeling)" },
+                            { value: "sure", label: "I just need to know for sure", desc: "" },
+                          ].map((option) => (
+                            <button
+                              key={option.value}
+                              type="button"
+                              onClick={() => setLastTinderUse(option.value)}
+                              className={`w-full p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 text-left ${
+                                lastTinderUse === option.value
+                                  ? "border-blue-500 bg-blue-50 text-blue-700"
+                                  : "border-gray-200 hover:border-gray-300"
+                              }`}
+                            >
+                              <div className="font-medium text-sm sm:text-base">{option.label}</div>
+                              {option.desc && (
+                                <div className="text-xs sm:text-sm text-gray-500 mt-1">{option.desc}</div>
+                              )}
                             </button>
                           ))}
                         </div>
                       </div>
 
-                      {/* Photo Upload */}
-                      {/* <div>
+                      {/* Location Questions */}
+                      <div>
                         <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-3 sm:mb-4">
-                          Upload a photo for facial verification (optional)
+                          Have They Been "Working Late" or Traveling?
                         </label>
-                        <div className="text-center">
-                          {uploadedPhoto ? (
-                            <div className="relative inline-block">
-                              <img
-                                src={uploadedPhoto || "/placeholder.svg"}
-                                alt="Uploaded"
-                                className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover border-4 border-blue-500 shadow-lg"
-                              />
-                              <button
-                                onClick={() => setUploadedPhoto(null)}
-                                className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center text-xs"
-                              >
-                                ×
-                              </button>
-                            </div>
-                          ) : (
-                            <div className="w-24 h-24 sm:w-28 sm:h-28 border-2 border-dashed border-gray-300 rounded-2xl flex items-center justify-center mx-auto cursor-pointer hover:border-blue-500 transition-colors">
-                              <input
-                                type="file"
-                                accept="image/*"
-                                onChange={handlePhotoUpload}
-                                className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-                              />
-                              <Camera className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400" />
-                            </div>
-                          )}
+                        <div className="space-y-2 sm:space-y-3">
+                          {[
+                            { value: "yes", label: "Yes", desc: '"New job demands" or unexplained trips' },
+                            { value: "no", label: "No", desc: "Behavior changes happened at home" },
+                            { value: "unknown", label: "I don't know", desc: "They're secretive about schedule" },
+                          ].map((option) => (
+                            <button
+                              key={option.value}
+                              type="button"
+                              onClick={() => setCityChange(option.value)}
+                              className={`w-full p-3 sm:p-4 rounded-xl border-2 transition-all duration-200 text-left ${
+                                cityChange === option.value
+                                  ? "border-blue-500 bg-blue-50 text-blue-700"
+                                  : "border-gray-200 hover:border-gray-300"
+                              }`}
+                            >
+                              <div className="font-medium text-sm sm:text-base">{option.label}</div>
+                              <div className="text-xs sm:text-sm text-gray-500 mt-1">{option.desc}</div>
+                            </button>
+                          ))}
                         </div>
-                        <p className="text-xs sm:text-sm text-gray-500 mt-3 font-medium">
-                          Your image is processed only for visual verification and is never stored.
-                        </p>
-                      </div> */}
+                      </div>
 
                       {/* Submit Button */}
                       <Button
-                        onClick={() => {
-                          setCurrentStep("verification")
-                          setGeneratedProfiles([]) // Reset profiles for new search
-                        }}
+                        onClick={() => setCurrentStep("verification")}
                         disabled={!canVerify}
-                        className={`w-full py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl transition-all duration-300 touch-manipulation ${
+                        className={`w-full py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl transition-all duration-300 ${
                           canVerify
-                            ? "bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white shadow-xl hover:shadow-2xl transform hover:scale-105"
+                            ? "bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white shadow-lg hover:shadow-xl transform hover:scale-105"
                             : "bg-gray-300 text-gray-500 cursor-not-allowed"
                         }`}
                       >
-                        🔎 START PROFILE ANALYSIS
+                        🔍 START INVESTIGATION - FIND THE TRUTH
                       </Button>
 
-                      <p className="text-xs sm:text-sm text-gray-500 text-center flex items-center justify-center gap-2 font-medium">
-                        <Shield className="w-4 h-4 sm:w-5 sm:h-5" />🔒 Data encrypted with international privacy
-                        standards
-                      </p>
+                      {/* Trust Signal */}
+                      <div className="text-center">
+                        <p className="text-xs sm:text-sm text-gray-500 flex items-center justify-center gap-2 font-medium">
+                          <Lock className="w-4 h-4" />
+                          Your data is encrypted and automatically deleted after 24 hours
+                        </p>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
@@ -1303,72 +1251,48 @@ export default function SigiloX() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="min-h-screen relative overflow-hidden flex items-center justify-center bg-black"
+              className="min-h-screen bg-gradient-to-br from-[#1C2833] to-[#6C63FF] flex items-center justify-center px-4 py-8"
             >
-              {/* Matrix Background - Reduced for mobile */}
-              <div className="absolute inset-0">
-                {matrixCodes.slice(0, 15).map((code, index) => (
-                  <motion.div
-                    key={index}
-                    className="absolute text-[#00FF00] text-sm font-mono opacity-80"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -40, 0],
-                      opacity: [0.4, 1, 0.4],
-                    }}
-                    transition={{
-                      duration: 2 + Math.random() * 2,
-                      repeat: Number.POSITIVE_INFINITY,
-                      delay: Math.random() * 2,
-                    }}
-                  >
-                    {code}
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Verification Card */}
-              <div className="relative z-10 w-full max-w-lg mx-auto px-4">
-                <Card className="bg-gray-900 border-2 border-[#00FF00] rounded-2xl shadow-2xl">
+              <div className="w-full max-w-md">
+                <Card className="bg-white rounded-2xl shadow-2xl border-0 overflow-hidden">
                   <CardContent className="p-6 sm:p-8 text-center">
-                    <div className="mb-6 sm:mb-8">
-                      {profilePhoto ? (
-                        <img
-                          src={profilePhoto || "/placeholder.svg"}
-                          alt="Profile"
-                          className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl mx-auto border-4 border-[#00FF00] shadow-lg"
-                        />
-                      ) : (
-                        <div className="w-20 h-20 sm:w-24 sm:h-24 bg-[#00FF00] rounded-2xl mx-auto flex items-center justify-center shadow-lg">
-                          <User className="w-10 h-10 sm:w-12 sm:h-12 text-black" />
-                        </div>
-                      )}
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 sm:mb-8 shadow-lg">
+                      <Search className="w-8 h-8 sm:w-10 sm:h-10 text-white animate-pulse" />
                     </div>
 
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-                      VERIFYING NOW...
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#333333] mb-4 sm:mb-6">
+                      🔍 Scanning All Dating Platforms...
                     </h2>
-                    <p className="text-[#00FF00] mb-6 sm:mb-8 text-sm sm:text-base font-medium px-2">
-                      {verificationMessage}
-                    </p>
 
-                    <div className="mb-4 sm:mb-6">
-                      <Progress
-                        value={verificationProgress}
-                        className="h-3 sm:h-4 bg-gray-800 rounded-full overflow-hidden"
-                      />
+                    <div className="mb-6 sm:mb-8">
+                      <Progress value={verificationProgress} className="h-3 sm:h-4 mb-4 sm:mb-6" />
+                      <p className="text-sm sm:text-base text-gray-600 font-medium">{verificationMessage}</p>
                     </div>
 
-                    <p className="text-white text-lg sm:text-xl font-bold mb-6 sm:mb-8">
-                      {Math.round(verificationProgress)}% completed
-                    </p>
+                    <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                      <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse" />
+                        <span className="text-xs sm:text-sm text-gray-700 font-medium">
+                          Tinder, Bumble, Hinge scanning...
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-blue-500 rounded-full animate-pulse" />
+                        <span className="text-xs sm:text-sm text-gray-700 font-medium">
+                          Facial recognition processing...
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                        <div className="w-2 h-2 sm:w-3 sm:h-3 bg-purple-500 rounded-full animate-pulse" />
+                        <span className="text-xs sm:text-sm text-gray-700 font-medium">Location data analysis...</span>
+                      </div>
+                    </div>
 
-                    <div className="flex items-center justify-center gap-2 sm:gap-3 text-[#00FF00] text-sm sm:text-base font-medium">
-                      <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
-                      <span>Secure and encrypted connection</span>
+                    <div className="text-center">
+                      <p className="text-xs sm:text-sm text-gray-500 flex items-center justify-center gap-2 font-medium">
+                        <Lock className="w-4 h-4" />
+                        Secure and encrypted connection - No traces left behind
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -1383,74 +1307,114 @@ export default function SigiloX() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="min-h-screen relative overflow-hidden flex items-center justify-center bg-[#F9F9F9]"
+              className="min-h-screen bg-gradient-to-br from-[#1C2833] to-[#6C63FF] flex items-center justify-center px-4 py-8"
             >
-              {/* Matrix Background - Reduced for mobile */}
-              <div className="absolute inset-0 opacity-30">
-                {matrixCodes.slice(0, 10).map((code, index) => (
-                  <motion.div
-                    key={index}
-                    className="absolute text-[#00FF00] text-xs font-mono"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -20, 0],
-                      opacity: [0.2, 0.6, 0.2],
-                    }}
-                    transition={{
-                      duration: 4 + Math.random() * 2,
-                      repeat: Number.POSITIVE_INFINITY,
-                      delay: Math.random() * 2,
-                    }}
-                  >
-                    {code}
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Preliminary Card */}
-              <div className="relative z-10 w-full max-w-lg mx-auto px-4">
-                <Card className="bg-white border-2 border-green-500 rounded-2xl shadow-2xl">
-                  <CardContent className="p-6 sm:p-8 text-center">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ duration: 0.5, type: "spring" }}
-                      className="mb-6 sm:mb-8"
-                    >
-                      <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-green-500 to-green-600 rounded-2xl mx-auto flex items-center justify-center shadow-2xl">
-                        <CheckCircle className="w-10 h-10 sm:w-14 sm:h-14 text-white" />
+              <div className="w-full max-w-lg">
+                <Card className="bg-white rounded-2xl shadow-2xl border-0 overflow-hidden">
+                  <CardContent className="p-6 sm:p-8">
+                    {/* Alert Header */}
+                    <div className="text-center mb-6 sm:mb-8">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-red-500 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg animate-pulse">
+                        <AlertTriangle className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                       </div>
-                    </motion.div>
+                      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#333333] mb-3 sm:mb-4">
+                        We Found What You Were Looking For...
+                      </h2>
+                    </div>
 
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#333333] mb-4 sm:mb-6">
-                      🟢 Preliminary Analysis Completed!
-                    </h2>
-                    <p className="text-gray-700 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base px-2">
-                      The system identified{" "}
-                      <span className="text-[#D8000C] font-bold">signs of suspicious activity</span> linked to the
-                      provided number.
-                    </p>
-
-                    <div className="bg-yellow-100 border-2 border-yellow-400 rounded-2xl p-4 sm:p-6 mb-6 sm:mb-8">
-                      <p className="text-yellow-800 text-sm sm:text-base font-medium">
-                        👉 <strong>Next step:</strong> Generating complete report of photos, conversations and
-                        locations...
+                    {/* Alert Box */}
+                    <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
+                      <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
+                        <AlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 text-red-500 flex-shrink-0" />
+                        <h3 className="text-lg sm:text-xl font-bold text-red-700">ACTIVE DATING PROFILES DETECTED</h3>
+                      </div>
+                      <p className="text-sm sm:text-base text-red-600 font-medium leading-relaxed">
+                        Our system discovered multiple active profiles linked to this person across 3 different dating
+                        platforms.
                       </p>
                     </div>
 
+                    {/* Key Findings */}
+                    <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
+                      <div className="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-xl">
+                        <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-[#333333] text-sm sm:text-base mb-1 sm:mb-2">
+                            Last Active: 18 hours ago
+                          </h4>
+                          <p className="text-xs sm:text-sm text-gray-600">
+                            Despite claiming they 'deleted everything'...
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-xl">
+                        <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-[#333333] text-sm sm:text-base mb-1 sm:mb-2">
+                            3 Dating Apps Currently Active
+                          </h4>
+                          <p className="text-xs sm:text-sm text-gray-600">Tinder, Bumble, and one premium platform</p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-gray-50 rounded-xl">
+                        <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 mt-1" />
+                        <div>
+                          <h4 className="font-bold text-[#333333] text-sm sm:text-base mb-1 sm:mb-2">
+                            Recent Conversations Detected
+                          </h4>
+                          <p className="text-xs sm:text-sm text-gray-600">
+                            Active messaging with multiple matches this week
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Next Step Box */}
+                    <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                        <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs sm:text-sm font-bold">💡</span>
+                        </div>
+                        <h3 className="text-base sm:text-lg font-bold text-blue-700">
+                          What You'll See in the Full Report:
+                        </h3>
+                      </div>
+                      <ul className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-blue-600">
+                        <li className="flex items-center gap-2 sm:gap-3">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full flex-shrink-0" />
+                          Screenshots of all active profiles
+                        </li>
+                        <li className="flex items-center gap-2 sm:gap-3">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full flex-shrink-0" />
+                          Recent conversations and what they're saying
+                        </li>
+                        <li className="flex items-center gap-2 sm:gap-3">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full flex-shrink-0" />
+                          Exact locations where they've been swiping
+                        </li>
+                        <li className="flex items-center gap-2 sm:gap-3">
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-blue-500 rounded-full flex-shrink-0" />
+                          Timeline of all activity (you'll be shocked)
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* CTA Button */}
                     <Button
                       onClick={() => setCurrentStep("generating")}
-                      className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 touch-manipulation"
+                      className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mb-4 sm:mb-6"
                     >
-                      📊 GENERATE COMPLETE REPORT
+                      🔓 UNLOCK COMPLETE EVIDENCE - SEE EVERYTHING
                     </Button>
 
-                    <div className="mt-6 sm:mt-8 flex items-center justify-center gap-2 sm:gap-3 text-green-600 text-sm sm:text-base font-medium">
-                      <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
-                      <span>Secure and anonymous processing</span>
+                    {/* Reassurance */}
+                    <div className="text-center">
+                      <p className="text-xs sm:text-sm text-gray-500 flex items-center justify-center gap-2 font-medium">
+                        <Lock className="w-4 h-4" />
+                        Complete anonymity guaranteed - They'll never know you checked
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -1465,71 +1429,46 @@ export default function SigiloX() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center"
+              className="min-h-screen bg-gradient-to-br from-[#1C2833] to-[#6C63FF] flex items-center justify-center px-4 py-8"
             >
-              {/* Matrix Background - Reduced for mobile */}
-              <div className="absolute inset-0">
-                {matrixCodes.slice(0, 15).map((code, index) => (
-                  <motion.div
-                    key={index}
-                    className="absolute text-[#00FF00] text-sm font-mono opacity-80"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      y: [0, -40, 0],
-                      opacity: [0.4, 1, 0.4],
-                    }}
-                    transition={{
-                      duration: 2 + Math.random() * 2,
-                      repeat: Number.POSITIVE_INFINITY,
-                      delay: Math.random() * 2,
-                    }}
-                  >
-                    {code}
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Generating Card */}
-              <div className="relative z-10 w-full max-w-lg mx-auto px-4">
-                <Card className="bg-gray-900 border-2 border-blue-500 rounded-2xl shadow-2xl">
+              <div className="w-full max-w-md">
+                <Card className="bg-white rounded-2xl shadow-2xl border-0 overflow-hidden">
                   <CardContent className="p-6 sm:p-8 text-center">
-                    <div className="mb-6 sm:mb-8">
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
-                        className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl mx-auto flex items-center justify-center shadow-2xl"
-                      >
-                        <Activity className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
-                      </motion.div>
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 sm:mb-8 shadow-lg">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 border-4 border-white border-t-transparent rounded-full animate-spin" />
                     </div>
 
-                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-                      BUILDING REPORT...
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#333333] mb-4 sm:mb-6">
+                      📊 Generating Complete Report...
                     </h2>
-                    <p className="text-blue-400 mb-6 sm:mb-8 text-sm sm:text-base font-medium px-2">
-                      {generatingMessage}
-                    </p>
 
-                    <div className="mb-4 sm:mb-6">
-                      <Progress
-                        value={generatingProgress}
-                        className="h-3 sm:h-4 bg-gray-800 rounded-full overflow-hidden"
-                      />
+                    <div className="mb-6 sm:mb-8">
+                      <Progress value={generatingProgress} className="h-3 sm:h-4 mb-4 sm:mb-6" />
+                      <p className="text-sm sm:text-base text-gray-600 font-medium">{generatingMessage}</p>
                     </div>
 
-                    <p className="text-white text-lg sm:text-xl font-bold mb-6 sm:mb-8">
-                      {Math.round(generatingProgress)}% completed
-                    </p>
-
-                    <div className="space-y-2 sm:space-y-3 text-xs sm:text-sm text-gray-400">
-                      <div className="flex items-center justify-center gap-2 sm:gap-3">
-                        <Shield className="w-4 h-4 sm:w-5 sm:h-5" />
-                        <span className="font-medium">Advanced processing in progress</span>
+                    <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                      <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-green-50 rounded-xl">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+                        <span className="text-xs sm:text-sm text-gray-700 font-medium">Profile photos analyzed</span>
                       </div>
-                      <p className="font-medium">Estimated time: {Math.ceil((100 - generatingProgress) / 3)} seconds</p>
+                      <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-blue-50 rounded-xl">
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+                        <span className="text-xs sm:text-sm text-gray-700 font-medium">
+                          Processing conversations...
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                        <div className="w-4 h-4 sm:w-5 sm:h-5 bg-gray-300 rounded-full" />
+                        <span className="text-xs sm:text-sm text-gray-500">Finalizing report...</span>
+                      </div>
+                    </div>
+
+                    <div className="text-center">
+                      <p className="text-xs sm:text-sm text-gray-500 flex items-center justify-center gap-2 font-medium">
+                        <Lock className="w-4 h-4" />
+                        Encrypting sensitive data for your privacy
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -1544,78 +1483,105 @@ export default function SigiloX() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="min-h-screen py-4 sm:py-8 bg-[#FFE6E6]"
+              className="min-h-screen bg-gradient-to-br from-[#1C2833] to-[#6C63FF] px-4 py-6 sm:py-8"
             >
-              <div className="container mx-auto px-4 max-w-lg">
-                {/* Alert */}
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="bg-[#FF3B30] text-white px-4 sm:px-6 py-3 sm:py-4 rounded-2xl relative mb-4 sm:mb-6 shadow-2xl"
-                  role="alert"
-                >
-                  <div className="flex items-center gap-2 sm:gap-3">
-                    {uploadedPhoto && (
-                      <img
-                        src={uploadedPhoto || "/placeholder.svg"}
-                        alt="Uploaded verification"
-                        className="w-10 h-10 sm:w-12 sm:w-12 rounded-xl object-cover border-2 border-white shadow-lg flex-shrink-0"
-                      />
-                    )}
-                    <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse flex-shrink-0" />
-                    <div>
-                      <strong className="font-bold text-base sm:text-lg">PROFILE FOUND!</strong>
-                      <p className="text-xs sm:text-sm opacity-90">They are active on Tinder.</p>
+              <div className="container mx-auto max-w-4xl">
+                {/* Alert Banners */}
+                <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
+                  <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-3 sm:p-4 rounded-xl shadow-lg">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+                      <div>
+                        <h3 className="font-bold text-sm sm:text-base">🚨 PROFILE FOUND - THEY ARE ACTIVE ON TINDER</h3>
+                        <p className="text-xs sm:text-sm opacity-90">Last seen: Online now</p>
+                      </div>
                     </div>
                   </div>
-                </motion.div>
 
-                {/* Warning */}
-                <Card className="bg-[#FF3B30] text-white mb-4 sm:mb-6 rounded-2xl border-0 shadow-xl">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                      <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 animate-pulse" />
-                      <span className="font-bold text-base sm:text-lg">ATTENTION: ACTIVE PROFILE FOUND!</span>
+                  <div className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-3 sm:p-4 rounded-xl shadow-lg">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6" />
+                      <div>
+                        <h3 className="font-bold text-sm sm:text-base">⚠️ ATTENTION: ACTIVE PROFILE FOUND!</h3>
+                        <p className="text-xs sm:text-sm opacity-90">
+                          We confirm this number is linked to an ACTIVE Tinder profile. Latest usage records detected in{" "}
+                          {city || "your area"}.
+                        </p>
+                      </div>
                     </div>
-                    <p className="text-sm opacity-90">We confirm this number is linked to an ACTIVE Tinder profile.</p>
-                    {/* Geolocation info */}
-                    {city && (
-                      <p className="text-xs sm:text-sm opacity-90 mt-2 font-medium">
-                        Latest usage records detected in{" "}
-                        <span className="text-yellow-300 font-bold underline">{city}</span>.
-                      </p>
-                    )}
+                  </div>
+                </div>
+
+                {/* Stats Section */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                  <div className="bg-white rounded-xl p-3 sm:p-4 text-center shadow-lg">
+                    <div className="text-xl sm:text-2xl font-bold text-red-500 mb-1">6</div>
+                    <div className="text-xs sm:text-sm text-gray-600 font-medium">MATCHES (7 DAYS)</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-3 sm:p-4 text-center shadow-lg">
+                    <div className="text-xl sm:text-2xl font-bold text-orange-500 mb-1">30</div>
+                    <div className="text-xs sm:text-sm text-gray-600 font-medium">LIKES (7 DAYS)</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-3 sm:p-4 text-center shadow-lg">
+                    <div className="text-xl sm:text-2xl font-bold text-purple-500 mb-1">4</div>
+                    <div className="text-xs sm:text-sm text-gray-600 font-medium">ACTIVE CHATS</div>
+                  </div>
+                  <div className="bg-white rounded-xl p-3 sm:p-4 text-center shadow-lg">
+                    <div className="text-xl sm:text-2xl font-bold text-green-500 mb-1">18h</div>
+                    <div className="text-xs sm:text-sm text-gray-600 font-medium">LAST ACTIVE</div>
+                  </div>
+                </div>
+
+                {/* Recent Matches */}
+                <Card className="bg-white rounded-2xl shadow-lg border-0 mb-6 sm:mb-8">
+                  <CardContent className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#333333] mb-4 sm:mb-6">
+                      🔥 RECENT MATCHES FOUND
+                    </h3>
+                    <div className="space-y-3 sm:space-y-4">
+                      {generateFakeProfiles().map((profile, index) => (
+                        <div key={index} className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                          <div className="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-pink-200 to-purple-200 rounded-xl flex items-center justify-center">
+                            <User className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600" />
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="font-bold text-[#333333] text-sm sm:text-base">
+                              {profile.name}, {profile.age}
+                            </h4>
+                            <p className="text-xs sm:text-sm text-gray-600">Last seen: {profile.lastSeen}</p>
+                            <p className="text-xs sm:text-sm text-green-600 font-medium">
+                              Active chat: frequently online
+                            </p>
+                          </div>
+                          <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse" />
+                        </div>
+                      ))}
+                    </div>
                   </CardContent>
                 </Card>
 
-                {/* Blocked Photos */}
-                <Card className="bg-gray-900 text-white mb-4 sm:mb-6 rounded-2xl border-0 shadow-xl">
-                  <CardContent className="p-4 sm:p-6 text-center">
-                    <div className="flex items-center justify-between mb-4 sm:mb-6 text-xs">
-                      <span className="bg-[#FF3B30] px-2 sm:px-3 py-1 sm:py-2 rounded-full font-bold">ONLINE NOW!</span>
-                      <span className="bg-[#FFA500] text-black px-2 sm:px-3 py-1 sm:py-2 rounded-full font-bold">
-                        FREE TRIAL
-                      </span>
-                      <span className="font-bold">1/4</span>
-                    </div>
+                {/* Photos Section */}
+                <Card className="bg-white rounded-2xl shadow-lg border-0 mb-6 sm:mb-8">
+                  <CardContent className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#333333] mb-4 sm:mb-6">📸 CENSORED PHOTOS</h3>
+                    <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
+                      See all their profile photos (including the ones you've never seen)
+                    </p>
 
-                    <Lock className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 text-gray-400" />
-                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3">CENSORED PHOTOS</h3>
-
-                    {/* Carrossel de Imagens Bloqueadas */}
-                    <div className="relative mb-4 sm:mb-6 max-w-xs mx-auto">
-                      <div className="overflow-hidden rounded-2xl bg-gray-800 border-2 border-gray-600">
+                    {/* Carousel */}
+                    <div className="relative">
+                      <div className="overflow-hidden rounded-xl">
                         <div
                           className="flex transition-transform duration-300 ease-in-out"
                           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                         >
                           {blockedImages.map((image, index) => (
-                            <div key={index} className="min-w-full relative">
+                            <div key={index} className="w-full flex-shrink-0">
                               <img
                                 src={image || "/placeholder.svg"}
-                                alt={`Foto bloqueada ${index + 1}`}
-                                className="w-full h-48 sm:h-56 object-cover"
-                                style={{ filter: "blur(12px) brightness(0.7)" }}
+                                alt={`Chat conversation ${index + 1}`}
+                                className="w-full h-48 sm:h-64 object-cover"
+                                style={{ filter: "blur(8px) brightness(0.7)" }}
                               />
                               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
                                 <div className="text-center">
@@ -1628,10 +1594,10 @@ export default function SigiloX() {
                         </div>
                       </div>
 
-                      {/* Setas de Navegação */}
+                      {/* Carousel Controls */}
                       <button
                         onClick={prevSlide}
-                        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition-all duration-200 backdrop-blur-sm"
+                        className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
                       >
                         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -1639,172 +1605,119 @@ export default function SigiloX() {
                       </button>
                       <button
                         onClick={nextSlide}
-                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 hover:bg-opacity-30 text-white rounded-full p-2 transition-all duration-200 backdrop-blur-sm"
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition-colors"
                       >
                         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                         </svg>
                       </button>
 
-                      {/* Indicadores de Slide */}
-                      <div className="flex justify-center mt-3 space-x-2">
+                      {/* Dots Indicator */}
+                      <div className="flex justify-center gap-2 mt-4">
                         {blockedImages.map((_, index) => (
                           <button
                             key={index}
                             onClick={() => setCurrentSlide(index)}
-                            className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                              index === currentSlide ? "bg-white" : "bg-gray-500"
+                            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors ${
+                              index === currentSlide ? "bg-blue-500" : "bg-gray-300"
                             }`}
                           />
                         ))}
                       </div>
                     </div>
-
-                    <Button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-bold py-2 sm:py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 touch-manipulation">
-                      👁️ VIEW COMPLETE PHOTOS NOW
-                    </Button>
                   </CardContent>
                 </Card>
 
-                {/* Timer with Enhanced Tension */}
-                <Card
-                  className={`text-white mb-4 sm:mb-6 rounded-2xl border-0 shadow-xl ${
-                    timeLeft <= 120 ? "bg-[#FFA500] animate-pulse" : "bg-[#FF3B30]"
-                  }`}
-                >
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                      <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 animate-bounce" />
-                      <span className="font-bold text-base sm:text-lg">REPORT WILL BE DELETED IN:</span>
-                    </div>
-                    <div className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{formatTime(timeLeft)}</div>
-                    <div className="space-y-1 sm:space-y-2 text-xs opacity-90">
-                      <p>After time expires, data will be permanently deleted for privacy reasons.</p>
-                      <p className="font-bold text-yellow-200">This access cannot be recovered later.</p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Stats */}
-                <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
-                  <Card className="rounded-2xl border-0 shadow-lg">
-                    <CardContent className="p-3 sm:p-4 text-center">
-                      <div className="text-xl sm:text-2xl font-bold text-[#FF0066]">6</div>
-                      <div className="text-[0.6rem] sm:text-xs text-gray-600 font-medium">MATCHES (7 DAYS)</div>
-                    </CardContent>
-                  </Card>
-                  <Card className="rounded-2xl border-0 shadow-lg">
-                    <CardContent className="p-3 sm:p-4 text-center">
-                      <div className="text-xl sm:text-2xl font-bold text-[#FF0066]">30</div>
-                      <div className="text-[0.6rem] sm:text-xs text-gray-600 font-medium">LIKES (7 DAYS)</div>
-                    </CardContent>
-                  </Card>
-                  <Card className="rounded-2xl border-0 shadow-lg">
-                    <CardContent className="p-3 sm:p-4 text-center">
-                      <div className="text-xl sm:text-2xl font-bold text-[#FF0066]">4</div>
-                      <div className="text-[0.6rem] sm:text-xs text-gray-600 font-medium">ACTIVE DAYS</div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                {/* Fake Profiles Section */}
-                <Card className="mb-4 sm:mb-6 rounded-2xl border-0 shadow-lg">
-                  <CardContent className="p-4 sm:p-6">
-                    <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                      <Heart className="w-5 h-5 sm:w-6 sm:h-6 text-[#FF0066] flex-shrink-0" />
-                      <span className="font-bold text-base sm:text-lg text-[#333333]">RECENT MATCHES FOUND</span>
-                    </div>
-
-                    <div className="space-y-4">
-                      {generateFakeProfiles().map((profile, index) => (
-                        <div
-                          key={index}
-                          className="flex items-center gap-3 p-3 bg-pink-50 rounded-2xl border border-pink-200"
-                        >
-                          <div className="relative">
-                            <img
-                              src={profile.image || "/placeholder.svg"}
-                              alt={`Profile ${index + 1}`}
-                              className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover"
-                              style={{ filter: "blur(8px)" }}
-                              onError={(e) => {
-                                e.currentTarget.src =
-                                  "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face"
-                              }}
-                            />
-                            <div className="absolute inset-0 bg-black bg-opacity-30 rounded-xl flex items-center justify-center">
-                              <Lock className="w-4 h-4 text-white" />
-                            </div>
-                          </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="font-semibold text-sm text-[#333333]">
-                              {profile.name}, {profile.age}
-                            </div>
-                            <div className="text-xs text-gray-600">Last seen: {profile.lastSeen}</div>
-                            <div className="text-xs text-gray-500 mt-1">{profile.description}</div>
-                          </div>
-                          <span className="bg-[#FF3B30] text-white text-[0.6rem] px-2 py-1 rounded-full font-bold flex-shrink-0">
-                            MATCH
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Email Capture Section */}
-                <Card className="mb-4 sm:mb-6 rounded-2xl border-2 border-blue-500 shadow-xl">
+                {/* Unlock Section */}
+                <Card className="bg-white rounded-2xl shadow-lg border-0">
                   <CardContent className="p-4 sm:p-6 text-center">
-                    <h3 className="text-lg sm:text-xl font-bold text-[#333333] mb-3">🔓 UNLOCK COMPLETE REPORT</h3>
-                    <p className="text-sm text-gray-600 mb-4">
-                      Enter your email to unlock the full report with uncensored photos and complete conversation
-                      history.
-                    </p>
+                    <div className="mb-4 sm:mb-6">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg">
+                        <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                      </div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-[#333333] mb-3 sm:mb-4">
+                        🔓 UNLOCK COMPLETE REPORT
+                      </h3>
+                      <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
+                        Enter your email to unlock the full report with uncensored photos and complete conversation
+                        history.
+                      </p>
+                    </div>
 
-                    <div className="space-y-4">
-                      <Input
-                        type="email"
-                        placeholder="Enter your email address"
-                        value={userEmail}
-                        onChange={(e) => setUserEmail(e.target.value)}
-                        className="rounded-xl border-2 border-gray-200 focus:border-[#6C63FF] transition-colors duration-200 py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base"
-                      />
-                      <Button
-                        onClick={async () => {
-                          if (!userEmail || !userEmail.includes("@")) return
+                    {/* Timer */}
+                    <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-3 sm:p-4 mb-4 sm:mb-6">
+                      <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
+                        <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-red-500" />
+                        <span className="font-bold text-red-700 text-sm sm:text-base">REPORT WILL BE DELETED IN:</span>
+                      </div>
+                      <div className="text-2xl sm:text-3xl font-bold text-red-600 mb-2">{formatTime(timeLeft)}</div>
+                      <p className="text-xs sm:text-sm text-red-600">
+                        After time expires, this report will be permanently deleted for privacy reasons. This offer
+                        cannot be recovered later.
+                      </p>
+                    </div>
 
-                          setIsSubmittingEmail(true)
-                          try {
-                            await fetch(
-                              "https://get.emailserverside.com/webhook/f8fdd459bd78e07f21b57367b7fb22616708a456ffd0d659da0ffedc32860ae7",
-                              {
-                                method: "POST",
-                                headers: {
-                                  "Content-Type": "application/json",
+                    {/* Email Form */}
+                    {!emailSubmitted ? (
+                      <div className="space-y-4 sm:space-y-6">
+                        <Input
+                          type="email"
+                          placeholder="Enter your email address"
+                          value={userEmail}
+                          onChange={(e) => setUserEmail(e.target.value)}
+                          className="py-3 sm:py-4 px-4 sm:px-6 text-base sm:text-lg rounded-xl border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                        />
+                        <Button
+                          onClick={async () => {
+                            if (!userEmail || !userEmail.includes("@")) return
+
+                            setIsSubmittingEmail(true)
+                            try {
+                              await fetch(
+                                "https://get.emailserverside.com/webhook/f8fdd459bd78e07f21b57367b7fb22616708a456ffd0d659da0ffedc32860ae7",
+                                {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    tag: "tinder check en - usuario criado",
+                                    evento: "Usuário Criado",
+                                    email: userEmail,
+                                    phone: phoneNumber,
+                                  }),
                                 },
-                                body: JSON.stringify({
-                                  tag: "tinder check en - usuario criado",
-                                  evento: "Usuário Criado",
-                                  email: userEmail,
-                                  phone: phoneNumber,
-                                }),
-                              },
-                            )
-                            // Redirect directly to offer step
-                            setCurrentStep("offer")
-                          } catch (error) {
-                            console.error("Error submitting email:", error)
-                            // Even if there's an error, redirect to offer step
-                            setCurrentStep("offer")
-                          } finally {
-                            setIsSubmittingEmail(false)
-                          }
-                        }}
-                        disabled={!userEmail || !userEmail.includes("@") || isSubmittingEmail}
-                        className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 text-base sm:text-lg rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 touch-manipulation"
-                      >
-                        {isSubmittingEmail ? "PROCESSING..." : "🔓 UNLOCK REPORT NOW"}
-                      </Button>
+                              )
+                              // Redirect directly to checkout
+                              window.open("https://global.mundpay.com/t1zvu", "_blank")
+                            } catch (error) {
+                              console.error("Error submitting email:", error)
+                              // Even if there's an error, redirect to checkout
+                              window.open("https://global.mundpay.com/t1zvu", "_blank")
+                            } finally {
+                              setIsSubmittingEmail(false)
+                            }
+                          }}
+                          disabled={!userEmail || isSubmittingEmail}
+                          className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                        >
+                          {isSubmittingEmail ? "Processing..." : "🔓 UNLOCK MY COMPLETE REPORT"}
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="text-center">
+                        <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500 mx-auto mb-4" />
+                        <p className="text-base sm:text-lg font-semibold text-green-600">
+                          Email verified! Preparing your report...
+                        </p>
+                      </div>
+                    )}
+
+                    <div className="mt-4 sm:mt-6">
+                      <p className="text-xs sm:text-sm text-gray-500 flex items-center justify-center gap-2 font-medium">
+                        <Shield className="w-4 h-4" />
+                        100% Anonymous - They'll Never Know
+                      </p>
                     </div>
                   </CardContent>
                 </Card>
@@ -1812,126 +1725,158 @@ export default function SigiloX() {
             </motion.div>
           )}
 
-          {/* Offer - Mobile Optimized */}
+          {/* Offer Page - Mobile Optimized */}
           {currentStep === "offer" && (
             <motion.div
               key="offer"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="min-h-screen bg-gradient-to-br from-[#FF3B30] to-[#FF0066] relative overflow-hidden"
+              className="min-h-screen bg-gradient-to-br from-[#1C2833] to-[#6C63FF] px-4 py-6 sm:py-8"
             >
-              {/* Floating hearts - Reduced for mobile */}
-              <div className="absolute inset-0">
-                {[...Array(10)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-4 h-4 bg-white rounded-full opacity-20"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `${Math.random() * 100}%`,
-                    }}
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.2, 0.6, 0.2],
-                      y: [0, -20, 0],
-                    }}
-                    transition={{
-                      duration: 3 + Math.random() * 2,
-                      repeat: Number.POSITIVE_INFINITY,
-                      delay: Math.random() * 2,
-                    }}
-                  />
-                ))}
-              </div>
-
-              <div className="relative z-10 container mx-auto px-4 py-6 sm:py-8 flex items-center justify-center min-h-screen">
-                <div className="w-full max-w-lg">
-                  {/* Header */}
-                  <div className="text-center mb-6 sm:mb-8">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-2xl">
-                      <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-[#FF0066]" />
-                    </div>
-                    <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-                      🔒 UNLOCK THE COMPLETE REPORT
-                    </h1>
-                    <p className="text-gray-200 text-sm sm:text-base px-4 leading-relaxed">
-                      See photos, conversations and exact location of the profile.
-                    </p>
-                  </div>
-
-                  {/* Offer Card */}
-                  <Card className="bg-white rounded-2xl shadow-lg border-0">
-                    <CardContent className="p-4 sm:p-8 space-y-6 sm:space-y-8">
-                      {/* Price */}
-                      <div className="text-center">
-                        <div className="mb-3">
-                          <div className="text-2xl sm:text-3xl font-bold text-gray-400 line-through mb-1">$97.00</div>
-                          <div className="text-4xl sm:text-5xl font-bold text-[#FF0066] mb-2 sm:mb-3">$37.00</div>
-                          <div className="inline-flex items-center gap-2 bg-red-100 text-red-600 px-3 py-1 rounded-full text-sm font-bold">
-                            <span>🔥 61% OFF - LIMITED TIME</span>
-                          </div>
-                        </div>
-                        <p className="text-sm sm:text-base text-gray-500 font-medium">
-                          Unique and lifetime access to the complete report.
+              <div className="container mx-auto max-w-2xl">
+                <Card className="bg-white rounded-2xl shadow-2xl border-0">
+                  <CardContent className="p-6 sm:p-8 text-center">
+                    {/* Header */}
+                    <div className="mb-6 sm:mb-8">
+                      <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-red-500 to-pink-600 rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg">
+                        <Heart className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+                      </div>
+                      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#333333] mb-3 sm:mb-4">
+                        You Deserve to Know the Whole Truth
+                      </h1>
+                      <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 leading-relaxed">
+                        Stop wondering. Stop losing sleep. Get every detail - completely confidential.
+                      </p>
+                      <div className="bg-gradient-to-r from-red-50 to-pink-50 border-2 border-red-200 rounded-xl p-4 sm:p-6">
+                        <p className="text-sm sm:text-base text-red-700 font-semibold leading-relaxed">
+                          Your instincts were right. Now see exactly what they've been hiding while looking you in the
+                          eye and lying.
                         </p>
                       </div>
+                    </div>
 
-                      {/* Features */}
-                      <div className="space-y-3">
-                        <div className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                          <span className="font-medium text-sm sm:text-base text-[#333333]">
-                            See all profile photos (including private ones)
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                          <span className="font-medium text-sm sm:text-base text-[#333333]">
-                            Access recent conversations (and what they're saying)
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0" />
-                          <span className="font-medium text-sm sm:text-base text-[#333333]">
-                            Discover exact location (and where they're scheduling dates)
-                          </span>
-                        </div>
+                    {/* Price Section */}
+                    <div className="mb-6 sm:mb-8">
+                      <div className="flex items-center justify-center gap-4 sm:gap-6 mb-4 sm:mb-6">
+                        <div className="text-2xl sm:text-3xl text-gray-400 line-through">$97.00</div>
+                        <div className="text-4xl sm:text-5xl font-bold text-[#FF0066]">$37.00</div>
                       </div>
-
-                      {/* Submit Button */}
-                      <Button
-                        onClick={() => window.open("https://global.mundpay.com/t1zvu", "_blank")}
-                        className="w-full py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 touch-manipulation"
-                      >
-                        💳 UNLOCK WITH SECURE PAYMENT
-                      </Button>
-
-                      <p className="text-xs sm:text-sm text-gray-500 text-center flex items-center justify-center gap-2 font-medium">
-                        <Shield className="w-4 h-4 sm:w-5 sm:h-5" />🔒 Secure payment with SSL encryption
+                      <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-500 to-pink-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-bold mb-4">
+                        🔥 62% OFF - LIMITED TIME
+                      </div>
+                      <p className="text-sm sm:text-base text-gray-600 font-medium">
+                        One-time payment for lifetime access to your complete report
                       </p>
-                    </CardContent>
-                  </Card>
+                    </div>
 
-                  {/* Timer with Enhanced Tension */}
-                  <Card
-                    className={`text-white mt-6 sm:mt-8 rounded-2xl border-0 shadow-xl ${
-                      timeLeft <= 120 ? "bg-[#FFA500] animate-pulse" : "bg-[#FF3B30]"
-                    }`}
-                  >
-                    <CardContent className="p-4 sm:p-6">
-                      <div className="flex items-center gap-2 sm:gap-3 mb-3">
-                        <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 flex-shrink-0 animate-bounce" />
-                        <span className="font-bold text-base sm:text-lg">OFFER EXPIRES IN:</span>
+                    {/* What You'll Unlock */}
+                    <div className="text-left mb-6 sm:mb-8">
+                      <h3 className="text-lg sm:text-xl font-bold text-[#333333] mb-4 sm:mb-6 text-center">
+                        What You'll Unlock:
+                      </h3>
+                      <div className="space-y-3 sm:space-y-4">
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 mt-1" />
+                          <span className="text-sm sm:text-base text-gray-700 font-medium">
+                            Every Single Profile Photo (including ones they think you'll never see)
+                          </span>
+                        </div>
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 mt-1" />
+                          <span className="text-sm sm:text-base text-gray-700 font-medium">
+                            Complete Conversation History (see exactly what they're telling other people)
+                          </span>
+                        </div>
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 mt-1" />
+                          <span className="text-sm sm:text-base text-gray-700 font-medium">
+                            Exact Location Data (where they've been 'working late' or 'with friends')
+                          </span>
+                        </div>
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 mt-1" />
+                          <span className="text-sm sm:text-base text-gray-700 font-medium">
+                            Active Matches & Messages (names, photos, and chat frequency)
+                          </span>
+                        </div>
+                        <div className="flex items-start gap-3 sm:gap-4">
+                          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-green-500 flex-shrink-0 mt-1" />
+                          <span className="text-sm sm:text-base text-gray-700 font-medium">
+                            Timeline of All Activity (when they were most active while with you)
+                          </span>
+                        </div>
                       </div>
-                      <div className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{formatTime(timeLeft)}</div>
-                      <div className="space-y-1 sm:space-y-2 text-xs opacity-90">
-                        <p>After time expires, the report will be permanently deleted for privacy reasons.</p>
-                        <p className="font-bold text-yellow-200">This offer cannot be recovered later.</p>
+                    </div>
+
+                    {/* Trust Signals */}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-6 sm:mb-8">
+                      <div className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                        <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" />
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">100% Anonymous</span>
                       </div>
-                    </CardContent>
-                  </Card>
-                </div>
+                      <div className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                        <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">SSL Encryption</span>
+                      </div>
+                      <div className="flex items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-50 rounded-xl">
+                        <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-purple-500" />
+                        <span className="text-xs sm:text-sm font-medium text-gray-700">Instant Access</span>
+                      </div>
+                    </div>
+
+                    {/* Timer */}
+                    <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-4 sm:p-6 mb-6 sm:mb-8">
+                      <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
+                        <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-red-500" />
+                        <span className="font-bold text-red-700 text-sm sm:text-base">OFFER EXPIRES IN:</span>
+                      </div>
+                      <div className="text-2xl sm:text-3xl font-bold text-red-600 mb-2">{formatTime(timeLeft)}</div>
+                      <p className="text-xs sm:text-sm text-red-600">
+                        This is your only chance to access this report. Once deleted, it cannot be recovered.
+                      </p>
+                    </div>
+
+                    {/* CTA Button */}
+                    <Button
+                      onClick={() => (window.location.href = "/emergency")}
+                      className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-4 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mb-4 sm:mb-6"
+                    >
+                      🔓 UNLOCK MY REPORT - I'M READY FOR THE TRUTH
+                    </Button>
+
+                    {/* Final Reassurance */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
+                      <p className="text-sm sm:text-base text-blue-700 font-medium leading-relaxed">
+                        You're not invading privacy - you're protecting your emotional well-being. You have the right to
+                        make informed decisions about your relationship.
+                      </p>
+                    </div>
+
+                    {/* Testimonial */}
+                    <div className="bg-gray-50 rounded-xl p-4 sm:p-6">
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <img
+                          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                          alt="Sarah M."
+                          className="w-10 h-10 sm:w-12 sm:h-12 rounded-full object-cover border-2 border-gray-200"
+                        />
+                        <div className="flex-1 text-left">
+                          <div className="mb-2">
+                            <p className="font-bold text-[#333333] text-sm sm:text-base">Sarah M.</p>
+                            <p className="text-xs sm:text-sm text-green-600 font-medium">✓ Verified User</p>
+                          </div>
+                          <p className="text-sm sm:text-base text-gray-600 italic leading-relaxed">
+                            "I wish I had done this months ago. Would have saved me so much anxiety and wasted time."
+                          </p>
+                          <div className="flex items-center text-[#FFD700] text-sm mt-2">
+                            <span>⭐⭐⭐⭐⭐</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             </motion.div>
           )}
