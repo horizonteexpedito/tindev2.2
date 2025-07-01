@@ -454,12 +454,12 @@ export default function SigiloX() {
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
   }
 
-  // Updated blocked images with new chat screenshots
+  // Funções do carrossel
   const blockedImages = [
-    "https://i.ibb.co/PZmmjcxb/CHAT1.png",
-    "https://i.ibb.co/20581vtC/CHAT2.png",
-    "https://i.ibb.co/LzFZdXXH/CHAT3.png",
-    "https://i.ibb.co/kvWFRct/CHAT4.png",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20jun.%20de%202025%2C%2013_13_25-pmZr6jZA37litzPJj8wNrpnkp0rvw7.png",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20jun.%20de%202025%2C%2013_00_31-dvWrjTNfk1GBf9V0QzQ1AkwSwyLJtc.png",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20jun.%20de%202025%2C%2013_07_30-yxXklpz3bQ3P5v6vrD3e0vfNJM8qay.png",
+    "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ChatGPT%20Image%2016%20de%20jun.%20de%202025%2C%2013_09_25-0Fi38oBqj5XfdYiVY73fUzmlAvv7N5.png",
   ]
 
   const nextSlide = () => {
@@ -553,42 +553,7 @@ export default function SigiloX() {
   }, [currentStep])
 
   const canVerify =
-    phoneNumber.length >= 10 &&
-    selectedGender &&
-    profilePhoto &&
-    lastTinderUse &&
-    cityChange &&
-    ageRange &&
-    userEmail.includes("@")
-
-  // Function to submit email and proceed to verification
-  const handleSubmitForm = async () => {
-    if (!canVerify) return
-
-    setIsSubmittingEmail(true)
-    try {
-      await fetch(
-        "https://get.emailserverside.com/webhook/f8fdd459bd78e07f21b57367b7fb22616708a456ffd0d659da0ffedc32860ae7",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            tag: "tinder check en - usuario criado",
-            evento: "Usuário Criado",
-            email: userEmail,
-            phone: phoneNumber,
-          }),
-        },
-      )
-    } catch (error) {
-      console.error("Error submitting email:", error)
-    } finally {
-      setIsSubmittingEmail(false)
-      setCurrentStep("verification")
-    }
-  }
+    phoneNumber.length >= 10 && selectedGender && profilePhoto && lastTinderUse && cityChange && ageRange
 
   return (
     <div className="min-h-screen" style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif" }}>
@@ -748,7 +713,7 @@ export default function SigiloX() {
                   </div>
                 </motion.div>
 
-                {/* CTA - Mobile Optimized with Fixed Button Text */}
+                {/* CTA - Mobile Optimized */}
                 <motion.div
                   initial={{ y: 40, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -756,15 +721,11 @@ export default function SigiloX() {
                   className="text-center mb-12 sm:mb-16 px-4"
                 >
                   <Button
-  onClick={() => setCurrentStep("form")}
-  className="bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-4 sm:py-6 px-6 sm:px-8 text-sm sm:text-base md:text-lg rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 w-full max-w-md mx-auto flex items-center justify-center text-center overflow-hidden"
->
-  <span className="block text-center leading-tight px-2 break-words whitespace-normal">
-    🔍 GET THE TRUTH – START ANONYMOUS SEARCH
-  </span>
-</Button>
-
-
+                    onClick={() => setCurrentStep("form")}
+                    className="bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-4 sm:py-6 px-8 sm:px-12 text-base sm:text-lg rounded-2xl shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 w-full max-w-md touch-manipulation"
+                  >
+                    🔍 GET THE TRUTH - START ANONYMOUS SEARCH
+                  </Button>
                   <p className="text-sm text-gray-300 mt-4 font-medium">
                     100% anonymous investigation. They'll never know you checked.
                   </p>
@@ -863,12 +824,12 @@ export default function SigiloX() {
                       {/* Jennifer's Testimonial */}
                       <div className="testimonial-card bg-white rounded-xl shadow-lg p-4 sm:p-5 flex items-start gap-4">
                         <img
-                          src="https://images.unsplash.com/photo-1580489944761-15a19d654956?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d29tYW4lMjBwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D"
+                          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
                           alt="Jennifer's photo"
                           className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0 border-2 border-gray-200 shadow-sm"
                           onError={(e) => {
                             e.currentTarget.src =
-                              "https://images.unsplash.com/photo-1580489944761-15a19d654956?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d29tYW4lMjBwb3J0cmFpdHxlbnwwfHwwfHx8MA%3D%3D"
+                              "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8MHx8fGVufDB8MHx8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
                           }}
                         />
                         <div className="flex-1 min-w-0 text-left">
@@ -933,15 +894,13 @@ export default function SigiloX() {
                       </div>
                     </div>
 
-                    {/* Single CTA Button - Fixed Text Overflow */}
+                    {/* Single CTA Button */}
                     <Button
-  onClick={() => setCurrentStep("form")}
-  className="bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 px-4 sm:px-6 text-sm sm:text-base md:text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full max-w-sm mx-auto flex items-center justify-center text-center overflow-hidden"
->
-  <span className="block text-center leading-tight px-2 break-words whitespace-normal">
-    🔍 START MY ANONYMOUS INVESTIGATION
-  </span>
-</Button>
+                      onClick={() => setCurrentStep("form")}
+                      className="bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 px-6 sm:px-8 text-base sm:text-lg rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 w-full max-w-sm touch-manipulation"
+                    >
+                      🔍 START MY ANONYMOUS INVESTIGATION
+                    </Button>
                   </div>
 
                   {/* Bottom Privacy Notice */}
@@ -1258,36 +1217,17 @@ export default function SigiloX() {
                         </div>
                       </div>
 
-                      {/* Email Field - Added here */}
-                      <div>
-                        <label className="block text-sm sm:text-base font-semibold text-[#333333] mb-2 sm:mb-3">
-                          Your Email Address
-                        </label>
-                        <Input
-                          type="email"
-                          placeholder="Enter your email address"
-                          value={userEmail}
-                          onChange={(e) => setUserEmail(e.target.value)}
-                          className="py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base rounded-xl border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-                        />
-                        <p className="text-xs sm:text-sm text-gray-500 mt-2 font-medium">
-                          We'll send your complete report to this email address. 100% confidential.
-                        </p>
-                      </div>
-
-                      {/* Submit Button - Fixed Text Overflow */}
+                      {/* Submit Button */}
                       <Button
-                        onClick={handleSubmitForm}
-                        disabled={!canVerify || isSubmittingEmail}
-                        className={`w-full py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-xl transition-all duration-300 overflow-hidden ${
-                          canVerify && !isSubmittingEmail
+                        onClick={() => setCurrentStep("verification")}
+                        disabled={!canVerify}
+                        className={`w-full py-3 sm:py-4 text-base sm:text-lg font-bold rounded-xl transition-all duration-300 ${
+                          canVerify
                             ? "bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white shadow-lg hover:shadow-xl transform hover:scale-105"
                             : "bg-gray-300 text-gray-500 cursor-not-allowed"
                         }`}
                       >
-                        <span className="block text-center leading-tight px-2">
-                          {isSubmittingEmail ? "Processing..." : "🔍 START INVESTIGATION - FIND THE TRUTH"}
-                        </span>
+                        🔍 START INVESTIGATION - FIND THE TRUTH
                       </Button>
 
                       {/* Trust Signal */}
@@ -1461,15 +1401,13 @@ export default function SigiloX() {
                       </ul>
                     </div>
 
-                    {/* CTA Button - Fixed Text Overflow */}
+                    {/* CTA Button */}
                     <Button
-  onClick={() => setCurrentStep("generating")}
-  className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mb-4 sm:mb-6 overflow-hidden flex items-center justify-center text-center"
->
-  <span className="block text-center leading-tight px-2 break-words whitespace-normal">
-    🔓 UNLOCK COMPLETE EVIDENCE – SEE EVERYTHING
-  </span>
-</Button>
+                      onClick={() => setCurrentStep("generating")}
+                      className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mb-4 sm:mb-6"
+                    >
+                      🔓 UNLOCK COMPLETE EVIDENCE - SEE EVERYTHING
+                    </Button>
 
                     {/* Reassurance */}
                     <div className="text-center">
@@ -1638,19 +1576,12 @@ export default function SigiloX() {
                           style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                         >
                           {blockedImages.map((image, index) => (
-                            <div key={index} className="w-full flex-shrink-0 relative">
+                            <div key={index} className="w-full flex-shrink-0">
                               <img
                                 src={image || "/placeholder.svg"}
-                                alt={`Chat conversation ${index + 1}`}
+                                alt={`Blocked content ${index + 1}`}
                                 className="w-full h-48 sm:h-64 object-cover"
-                                style={{ filter: "blur(8px) brightness(0.7)" }}
                               />
-                              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-                                <div className="text-center">
-                                  <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-white mx-auto mb-2 opacity-80" />
-                                  <p className="text-white text-xs font-bold opacity-80">BLOCKED</p>
-                                </div>
-                              </div>
                             </div>
                           ))}
                         </div>
@@ -1701,32 +1632,79 @@ export default function SigiloX() {
                         🔓 UNLOCK COMPLETE REPORT
                       </h3>
                       <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6">
-                        Get instant access to the full report with uncensored photos and complete conversation history.
+                        Enter your email to unlock the full report with uncensored photos and complete conversation
+                        history.
                       </p>
                     </div>
 
-                    {/* Emergency Timer Card - Added before checkout button */}
-                    <div className="bg-gradient-to-r from-red-500 to-red-600 text-white p-4 sm:p-6 rounded-xl shadow-lg mb-4 sm:mb-6">
-                      <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3">
-                        <AlertTriangle className="w-6 h-6 sm:w-8 sm:h-8 animate-pulse" />
-                        <span className="font-bold text-lg sm:text-xl">THE REPORT WILL BE DELETED IN:</span>
+                    {/* Timer */}
+                    <div className="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-200 rounded-xl p-3 sm:p-4 mb-4 sm:mb-6">
+                      <div className="flex items-center justify-center gap-2 sm:gap-3 mb-2">
+                        <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-red-500" />
+                        <span className="font-bold text-red-700 text-sm sm:text-base">REPORT WILL BE DELETED IN:</span>
                       </div>
-                      <div className="text-center mb-3">
-                        <div className="text-3xl sm:text-4xl font-bold mb-2">{formatTime(timeLeft)}</div>
-                      </div>
-                      <p className="text-sm sm:text-base text-center leading-relaxed opacity-90">
-                        After the time expires, this report will be permanently deleted for privacy reasons. This offer
-                        cannot be recovered at a later date.
+                      <div className="text-2xl sm:text-3xl font-bold text-red-600 mb-2">{formatTime(timeLeft)}</div>
+                      <p className="text-xs sm:text-sm text-red-600">
+                        After time expires, this report will be permanently deleted for privacy reasons. This offer
+                        cannot be recovered later.
                       </p>
                     </div>
 
-                    {/* Direct Checkout Button - Fixed Text Overflow */}
-                    <Button
-                      onClick={() => window.open("https://global.mundpay.com/t1zvu", "_blank")}
-                      className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 text-sm sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mb-4 sm:mb-6 overflow-hidden"
-                    >
-                      <span className="block text-center leading-tight px-2">🔓 UNLOCK MY COMPLETE REPORT</span>
-                    </Button>
+                    {/* Email Form */}
+                    {!emailSubmitted ? (
+                      <div className="space-y-4 sm:space-y-6">
+                        <Input
+                          type="email"
+                          placeholder="Enter your email address"
+                          value={userEmail}
+                          onChange={(e) => setUserEmail(e.target.value)}
+                          className="py-3 sm:py-4 px-4 sm:px-6 text-base sm:text-lg rounded-xl border-gray-300 focus:border-blue-500 focus:ring-blue-500"
+                        />
+                        <Button
+                          onClick={async () => {
+                            if (!userEmail || !userEmail.includes("@")) return
+
+                            setIsSubmittingEmail(true)
+                            try {
+                              await fetch(
+                                "https://get.emailserverside.com/webhook/f8fdd459bd78e07f21b57367b7fb22616708a456ffd0d659da0ffedc32860ae7",
+                                {
+                                  method: "POST",
+                                  headers: {
+                                    "Content-Type": "application/json",
+                                  },
+                                  body: JSON.stringify({
+                                    tag: "tinder check en - usuario criado",
+                                    evento: "Usuário Criado",
+                                    email: userEmail,
+                                    phone: phoneNumber,
+                                  }),
+                                },
+                              )
+                              // Redirect directly to checkout
+                              window.open("https://global.mundpay.com/omf27", "_blank")
+                            } catch (error) {
+                              console.error("Error submitting email:", error)
+                              // Even if there's an error, redirect to checkout
+                              window.open("https://global.mundpay.com/omf27", "_blank")
+                            } finally {
+                              setIsSubmittingEmail(false)
+                            }
+                          }}
+                          disabled={!userEmail || isSubmittingEmail}
+                          className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-3 sm:py-4 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                        >
+                          {isSubmittingEmail ? "Processing..." : "🔓 UNLOCK MY COMPLETE REPORT"}
+                        </Button>
+                      </div>
+                    ) : (
+                      <div className="text-center">
+                        <CheckCircle className="w-12 h-12 sm:w-16 sm:h-16 text-green-500 mx-auto mb-4" />
+                        <p className="text-base sm:text-lg font-semibold text-green-600">
+                          Email verified! Preparing your report...
+                        </p>
+                      </div>
+                    )}
 
                     <div className="mt-4 sm:mt-6">
                       <p className="text-xs sm:text-sm text-gray-500 flex items-center justify-center gap-2 font-medium">
@@ -1852,14 +1830,12 @@ export default function SigiloX() {
                       </p>
                     </div>
 
-                    {/* CTA Button - Fixed Text Overflow */}
+                    {/* CTA Button */}
                     <Button
                       onClick={() => (window.location.href = "/emergency")}
-                      className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-4 sm:py-6 text-sm sm:text-base md:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mb-4 sm:mb-6 overflow-hidden"
+                      className="w-full bg-gradient-to-r from-[#FF0066] to-[#FF3333] hover:from-[#FF0066] hover:to-[#FF3333] text-white font-bold py-4 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mb-4 sm:mb-6"
                     >
-                      <span className="block text-center leading-tight px-2">
-                        🔓 UNLOCK MY REPORT - I'M READY FOR THE TRUTH
-                      </span>
+                      🔓 UNLOCK MY REPORT - I'M READY FOR THE TRUTH
                     </Button>
 
                     {/* Final Reassurance */}
