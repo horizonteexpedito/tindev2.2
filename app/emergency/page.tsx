@@ -309,7 +309,7 @@ export default function EmergencyPage() {
         <Card className="border-red-500 bg-gradient-to-r from-red-50 to-orange-50">
           <CardContent className="p-6">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-red-600 mb-2">🔥 90% OFF TODAY ONLY!</h3>
+              <h3 className="text-2xl font-bold text-red-600 mb-2">🔥 52% OFF TODAY ONLY!</h3>
               <p className="text-lg font-semibold text-gray-700">
                 Offer expires in: <span className="text-red-600 font-mono">{formatTime(timeLeft)}</span>
               </p>
@@ -318,7 +318,7 @@ export default function EmergencyPage() {
             {/* Pricing */}
             <div className="text-center mb-6">
               <div className="inline-block bg-white rounded-2xl p-6 shadow-lg">
-                <div className="text-3xl font-bold text-gray-400 line-through mb-2">$299</div>
+                <div className="text-3xl font-bold text-gray-400 line-through mb-2">$97</div>
                 <div className="text-5xl font-bold text-red-600 mb-4">$47</div>
 
                 {/* Features */}
