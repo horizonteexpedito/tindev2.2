@@ -4,17 +4,56 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { MapPin, Shield, CheckCircle, Camera, MessageCircle, Lock } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
-import { useGeolocation } from "@/hooks/useGeolocation"
-import Link from "next/link"
 
 export default function EmergencyPage() {
   const [currentDateTime, setCurrentDateTime] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [profilePhoto, setProfilePhoto] = useState<string | null>(null)
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60) // 24 hours in seconds
+  const [city, setCity] = useState("")
+  const [geoLoading, setGeoLoading] = useState(true)
 
   // Get geolocation
-  const { city, loading: geoLoading, error: geoError } = useGeolocation()
+  useEffect(() => {
+    const getLocation = async () => {
+      try {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            async (position) => {
+              const { latitude, longitude } = position.coords
+              
+              // Use a reverse geocoding service to get city name
+              try {
+                const response = await fetch(
+                  `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+                )
+                const data = await response.json()
+                setCity(data.city || data.locality || "your area")
+              } catch (error) {
+                console.error("Error getting city:", error)
+                setCity("your area")
+              }
+              setGeoLoading(false)
+            },
+            (error) => {
+              console.error("Error getting location:", error)
+              setCity("your area")
+              setGeoLoading(false)
+            }
+          )
+        } else {
+          setCity("your area")
+          setGeoLoading(false)
+        }
+      } catch (error) {
+        console.error("Geolocation error:", error)
+        setCity("your area")
+        setGeoLoading(false)
+      }
+    }
+
+    getLocation()
+  }, [])
 
   // Set current date and time
   useEffect(() => {
@@ -25,7 +64,7 @@ export default function EmergencyPage() {
     const hours = String(now.getHours()).padStart(2, "0")
     const minutes = String(now.getMinutes()).padStart(2, "0")
 
-    setCurrentDateTime(`${day}/${month}/${year} ${hours}:${minutes}`)
+    setCurrentDateTime(`${month}/${day}/${year} ${hours}:${minutes}`)
   }, [])
 
   // Get phone and photo from URL params or sessionStorage
@@ -48,37 +87,29 @@ export default function EmergencyPage() {
     return () => clearInterval(timer)
   }, [])
 
+  // Load Kiwify script
+  useEffect(() => {
+    // Set global variables for Kiwify
+    window.nextUpsellURL = "https://tindercheck.online/emergency2"
+    window.nextDownsellURL = "https://tindercheck.online/emergency-d"
+    
+    // Load Kiwify script
+    const script = document.createElement('script')
+    script.src = 'https://snippets.kiwify.com/upsell/upsell.min.js'
+    script.async = true
+    document.head.appendChild(script)
+
+    return () => {
+      // Cleanup script if component unmounts
+      document.head.removeChild(script)
+    }
+  }, [])
+
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600)
     const mins = Math.floor((seconds % 3600) / 60)
     const secs = seconds % 60
     return `${hours.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
-  }
-
-  // OneClick event handlers
-  const handleMainButton = () => {
-    try {
-      // Verificar se o script OneClick está disponível
-      if (typeof window !== 'undefined' && window.fornpay) {
-        // Tentar acionar o OneClick com o ID do fornpay
-        window.fornpay.trigger('ihkj3cpssf')
-      } else {
-        console.warn('OneClick script not loaded yet')
-        // Fallback: você pode adicionar uma lógica alternativa aqui
-        // Por exemplo, mostrar uma mensagem ou tentar novamente após um delay
-      }
-    } catch (error) {
-      console.error('Error triggering OneClick:', error)
-    }
-  }
-
-  const handleDownsell = () => {
-    try {
-      // Redirecionar para o downsell
-      window.location.href = "https://www.tindercheck.online/emergency-d"
-    } catch (error) {
-      console.error('Error redirecting to downsell:', error)
-    }
   }
 
   const suspiciousStats = [
@@ -87,8 +118,8 @@ export default function EmergencyPage() {
     { count: 41, keyword: "Love", description: "messages contained the word/similar" },
     { count: 20, description: "photos and 5 videos are hidden by a password on the phone" },
     { count: 8, keyword: "Secret", description: "messages contained the word/similar" },
-    { count: 2, description: "archived conversations have been marked as suspicious" },
-    { count: 9, description: "recently received single-view images were also identified and restored" },
+    { count: 2, description: "archived conversations have been flagged as suspicious" },
+    { count: 9, description: "disappearing images recently received have also been identified and restored" },
     { count: 7, description: `suspicious locations have been detected near ${city || "your area"}` },
   ]
 
@@ -123,10 +154,11 @@ export default function EmergencyPage() {
         <Card className="border-orange-200 bg-orange-50">
           <CardContent className="p-6 text-center">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
-              Our data-driven algorithm, using words and photos, detected suspicious messages and files…
+              Our data-driven algorithm, using words and photos, has detected suspicious messages and files...
             </h2>
             <p className="text-lg font-semibold text-green-600">
-              Report exported with 98% accuracy on: <span className="text-blue-600">{currentDateTime}</span>
+              Report exported with 98% accuracy on:{" "}
+              <span className="text-blue-600">{currentDateTime}</span>
             </p>
           </CardContent>
         </Card>
@@ -160,7 +192,7 @@ export default function EmergencyPage() {
                   <span className="text-sm sm:text-base">
                     {stat.keyword ? (
                       <>
-                        The <span className="text-red-600 font-bold">{stat.count}</span> {stat.description}{" "}
+                        <span className="text-red-600 font-bold">{stat.count}</span> {stat.description}{" "}
                         <span className="text-red-600 font-bold">"{stat.keyword}"</span>.
                       </>
                     ) : (
@@ -180,9 +212,9 @@ export default function EmergencyPage() {
           <CardContent className="p-6">
             <div className="text-center mb-6">
               <h3 className="text-xl font-bold text-gray-800 mb-2">
-                We have detected suspicious messages on WhatsApp.
+                We detected suspicious messages on WhatsApp.
               </h3>
-              <p className="text-red-600 font-semibold">(Get access to the app to view messages.)</p>
+              <p className="text-red-600 font-semibold">(Get app access to see the messages.)</p>
             </div>
 
             {/* Mock WhatsApp Interface */}
@@ -218,9 +250,11 @@ export default function EmergencyPage() {
           <CardContent className="p-6">
             <div className="text-center mb-6">
               <h3 className="text-xl font-bold text-gray-800 mb-2">
-                We have detected photos and videos containing nudity.
+                We detected photos and videos containing nudity.
               </h3>
-              <p className="text-red-600 font-semibold">(Get access to the app to view photos without censorship.)</p>
+              <p className="text-red-600 font-semibold">
+                (Get app access to see the uncensored photos.)
+              </p>
             </div>
 
             {/* Censored Photo Grid */}
@@ -246,14 +280,16 @@ export default function EmergencyPage() {
         <Card className="border-green-200 bg-green-50">
           <CardContent className="p-6">
             <h3 className="text-xl font-bold text-gray-800 mb-4 text-center">
-              The phone you want to track was recently located here.
+              The phone you want to track has been recently located here.
             </h3>
 
             {/* Location Info */}
             <div className="text-center mb-4">
               <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full">
                 <MapPin className="w-5 h-5 text-blue-600" />
-                <span className="font-semibold text-blue-800">{city ? `Last seen in ${city}` : "Locating..."}</span>
+                <span className="font-semibold text-blue-800">
+                  {city ? `Last seen in ${city}` : "Locating..."}
+                </span>
               </div>
             </div>
 
@@ -262,7 +298,7 @@ export default function EmergencyPage() {
               <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-green-200 opacity-50"></div>
               <div className="relative z-10 text-center">
                 <div className="w-4 h-4 bg-red-500 rounded-full mx-auto mb-2 animate-pulse"></div>
-                <p className="text-sm font-semibold text-gray-700">Approximate Location</p>
+                <p className="text-sm font-semibold text-gray-700">Approximate location</p>
                 <p className="text-xs text-gray-600">{city || "Loading location..."}</p>
               </div>
               {/* Mock location circle */}
@@ -281,25 +317,27 @@ export default function EmergencyPage() {
                 <Camera className="w-12 h-12 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                You have reached the end of your free consultation.
+                You've reached the end of your free consultation.
               </h3>
             </div>
 
             <div className="space-y-4 text-left max-w-2xl mx-auto text-gray-700">
-              <p>I know you're tired of guessing and want some real answers.</p>
+              <p>I know you're tired of guessing and you want real answers.</p>
               <p>
-                Our satellite tracking system is the most advanced technology to find out what's going on. But there's a
-                catch: keeping the satellites and servers running 24/7 is expensive.
+                Our satellite tracking system is the most advanced technology for discovering what's happening.
+                But here's the catch: keeping the satellites and servers running 24/7 is expensive.
               </p>
-              <p>That's why, unfortunately, we can't provide more than 5% of the information we uncover for free.</p>
-              <p>The good news? You don't have to spend a fortune to hire a private investigator.</p>
               <p>
-                We've developed an app that puts that same technology in your hands and lets you track everything
-                discreetly and efficiently on your own.
+                That's why, unfortunately, we can't provide more than 5% of the information we discover for free.
+              </p>
+              <p>The good news? You don't need to spend a fortune hiring a private investigator.</p>
+              <p>
+                We've developed an app that puts this same technology in your hands and allows you to
+                track everything discreetly and efficiently by yourself.
               </p>
               <p className="font-semibold text-red-600">
-                It's time to stop guessing and find out the truth. The answers are waiting for you. Click now and get
-                instant access – before it's too late!
+                It's time to stop guessing and discover the truth. The answers are waiting for you. Click
+                now and get instant access – before it's too late!
               </p>
             </div>
           </CardContent>
@@ -311,7 +349,8 @@ export default function EmergencyPage() {
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-red-600 mb-2">🔥 52% OFF TODAY ONLY!</h3>
               <p className="text-lg font-semibold text-gray-700">
-                Offer expires in: <span className="text-red-600 font-mono">{formatTime(timeLeft)}</span>
+                Offer expires in:{" "}
+                <span className="text-red-600 font-mono">{formatTime(timeLeft)}</span>
               </p>
             </div>
 
@@ -323,7 +362,7 @@ export default function EmergencyPage() {
 
                 {/* Features */}
                 <div className="space-y-2 text-left mb-6">
-                  {["30 days warranty", "Access for 1 year", "Tracking up to 3 numbers"].map((feature, index) => (
+                  {["30-day guarantee", "1-year access", "Track up to 3 numbers"].map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
                       <CheckCircle className="w-5 h-5 text-green-500" />
                       <span className="text-sm">{feature}</span>
@@ -331,55 +370,21 @@ export default function EmergencyPage() {
                   ))}
                 </div>
 
-                {/* OneClick Upsell Buttons - Convertidos para botões */}
-                <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
-                  <button
-                    onClick={handleMainButton}
-                    data-fornpay="ihkj3cpssf"
-                    className="fornpay_btn"
-                    style={{
-                      background: "#28a745",
-                      backgroundImage: "linear-gradient(to bottom, #28a745, #1e7e34)",
-                      borderRadius: "8px",
-                      color: "#fff",
-                      fontFamily: "Arial",
-                      fontSize: "18px",
-                      fontWeight: "bold",
-                      padding: "16px 24px",
-                      border: "1px solid #1e7e34",
-                      textDecoration: "none",
-                      display: "block",
-                      cursor: "pointer",
-                      textAlign: "center",
-                      marginBottom: "10px",
-                      width: "100%",
-                      boxSizing: "border-box"
-                    }}
+                {/* Kiwify OneClick Buttons */}
+                <div className="text-center">
+                  <button 
+                    id="kiwify-upsell-trigger-L6B5FlS" 
+                    className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded border border-green-700 cursor-pointer text-lg mb-4 w-full transition-colors"
                   >
-                    ✅ I WANT ACCESS TO THE SUSPICIOUS CONTENT NOW
+                    ✅ I WANT TO ACCESS THE SUSPICIOUS CONTENT NOW
                   </button>
-                  <button
-                    onClick={handleDownsell}
-                    data-downsell="https://www.tindercheck.online/emergency-d"
-                    className="fornpay_downsell"
-                    style={{
-                      color: "#004faa",
-                      fontFamily: "Arial",
-                      marginTop: "10px",
-                      fontSize: "16px",
-                      fontWeight: "100",
-                      textDecoration: "none",
-                      display: "block",
-                      cursor: "pointer",
-                      textAlign: "center",
-                      background: "none",
-                      border: "none",
-                      padding: "0",
-                      width: "100%"
-                    }}
+                  
+                  <div 
+                    id="kiwify-upsell-cancel-trigger" 
+                    className="mt-4 cursor-pointer text-base underline text-blue-600 hover:text-blue-800 transition-colors"
                   >
-                    I don't want access to suspicious content now
-                  </button>
+                    I don't want to access the suspicious content now
+                  </div>
                 </div>
               </div>
             </div>
@@ -392,16 +397,19 @@ export default function EmergencyPage() {
             <div className="w-20 h-20 bg-green-500 rounded-full mx-auto mb-4 flex items-center justify-center">
               <Shield className="w-10 h-10 text-white" />
             </div>
-            <h3 className="text-xl font-bold text-green-700 mb-4">30-Day Satisfaction or Money Back Guarantee</h3>
+            <h3 className="text-xl font-bold text-green-700 mb-4">
+              30-Day Money-Back Guarantee
+            </h3>
             <div className="text-gray-700 space-y-3 max-w-2xl mx-auto">
               <p>
-                Under French law, we are required to refund you if you are not satisfied with the app within 14 days.
-                However, because we are so confident that our app works perfectly, we have extended this guarantee to 30
-                days.
+                Under US law, we are required to refund you if you're not satisfied with
+                the app within 14 days. However, because we're so confident that our app
+                works perfectly, we've extended this guarantee to 30 days.
               </p>
               <p>
-                This means you have twice as much time to test the app and see the results for yourself – completely
-                risk-free. If for any reason you are not satisfied, we will refund you – no questions asked.
+                This means you have twice the time to test the app and see the results for
+                yourself – completely risk-free. If for any reason you're not satisfied, we'll
+                refund you – no questions asked.
               </p>
               <p className="font-semibold">
                 If you have any questions regarding refunds, please contact Customer Service.
@@ -410,9 +418,6 @@ export default function EmergencyPage() {
           </CardContent>
         </Card>
       </div>
-
-      {/* OneClick Script */}
-      <script src="https://app.mundpay.com/js/oneclick.js"></script>
     </div>
   )
 }
