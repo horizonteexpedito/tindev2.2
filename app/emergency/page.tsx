@@ -154,7 +154,7 @@ export default function EmergencyPage() {
         <Card className="border-orange-200 bg-orange-50">
           <CardContent className="p-6 text-center">
             <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
-              Our data-driven algorithm, using words and photos, has detected suspicious messages and files...
+              Our algorithm based on numbers, data, using words and photos, detected suspicious messages and files on WhatsApp...
             </h2>
             <p className="text-lg font-semibold text-green-600">
               Report exported with 98% accuracy on:{" "}
