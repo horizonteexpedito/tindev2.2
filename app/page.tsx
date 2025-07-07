@@ -357,52 +357,45 @@ export default function SigiloX() {
     setPhotoError("")
 
     try {
-      const response = await fetch("/api/whatsapp-photo", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ phone: phone }),
-      })
+  const response = await fetch("/api/whatsapp-photo", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ phone: phone }),
+  })
 
-      // Check if response is ok first
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`)
-      }
+  // --- NEW robust handling (replaces old !response.ok throw) ---
+  let data: any = null
 
-      // Check if response is JSON
-      const contentType = response.headers.get("content-type")
-      if (!contentType || !contentType.includes("application/json")) {
-        throw new Error("Response is not JSON")
-      }
+  try {
+    data = await response.json()
+  } catch {
+    // if the body is not valid JSON we still want to fall back safely
+    data = {}
+  }
 
-      const data = await response.json()
+  // When the API answers with non-200 we still carry on with a safe payload
+  if (!response.ok || !data?.success) {
+    setProfilePhoto(
+      "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=",
+    )
+    setIsPhotoPrivate(true)
+    setPhotoError("Could not load photo")
+    return
+  }
 
-      if (data.success) {
-        if (data.is_photo_private) {
-          setProfilePhoto(
-            "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=",
-          )
-          setIsPhotoPrivate(true)
-        } else {
-          setProfilePhoto(data.result)
-          setIsPhotoPrivate(false)
-        }
-      } else {
-        setProfilePhoto(
-          "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=",
-        )
-        setIsPhotoPrivate(true)
-        setPhotoError("Could not load photo")
-      }
-    } catch (error) {
-      console.error("Erro ao buscar foto:", error)
-      setProfilePhoto(
-        "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=",
-      )
-      setIsPhotoPrivate(true)
-      setPhotoError("Error loading photo")
-    } finally {
+  // ✅ Successful, public photo
+  setProfilePhoto(data.result)
+  setIsPhotoPrivate(!!data.is_photo_private)
+} catch (error) {
+  console.error("Erro ao buscar foto:", error)
+  setProfilePhoto(
+    "https://media.istockphoto.com/id/1337144146/vector/default-avatar-profile-icon-vector.jpg?s=612x612&w=0&k=20&c=BIbFwuv7FxTWvh5S3vB6bkT0Qv8Vn8N5Ffseq84ClGI=",
+  )
+  setIsPhotoPrivate(true)
+  setPhotoError("Error loading photo")
+} finally {
       setIsLoadingPhoto(false)
     }
   }
