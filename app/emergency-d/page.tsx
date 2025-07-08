@@ -4,20 +4,16 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { MapPin, Camera, MessageCircle } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
-
-// ---- kiwify-globals.ts ----
-declare global {
-  interface Window {
-    nextUpsellURL?: string
-    nextDownsellURL?: string
-  }
-}
+import { useGeolocation } from "@/hooks/useGeolocation"
 
 export default function EmergencyDownsellPage() {
   const [currentDateTime, setCurrentDateTime] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [profilePhoto, setProfilePhoto] = useState<string | null>(null)
   const [timeLeft, setTimeLeft] = useState(12 * 60 * 60) // 12 hours in seconds
+
+  // Get geolocation
+  const { city, loading: geoLoading, error: geoError } = useGeolocation()
 
   // Set current date and time
   useEffect(() => {
@@ -51,29 +47,36 @@ export default function EmergencyDownsellPage() {
     return () => clearInterval(timer)
   }, [])
 
-  // Load Kiwify script - FIXED: using the same pattern as the working page
-  useEffect(() => {
-    // Set global variables for Kiwify
-    window.nextUpsellURL = "https://tindercheck.online/emergency2"
-    window.nextDownsellURL = "https://tindercheck.online/emergency2"
-    
-    // Load Kiwify script
-    const script = document.createElement('script')
-    script.src = 'https://snippets.kiwify.com/upsell/upsell.min.js'
-    script.async = true
-    document.head.appendChild(script)
-
-    return () => {
-      // Cleanup script if component unmounts
-      document.head.removeChild(script)
-    }
-  }, [])
-
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600)
     const mins = Math.floor((seconds % 3600) / 60)
     const secs = seconds % 60
     return `${hours.toString().padStart(2, "0")}:${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
+  }
+
+  // OneClick event handlers para downsell
+  const handleDownsellButton = () => {
+    try {
+      // Verificar se o script OneClick está disponível
+      if (typeof window !== 'undefined' && window.fornpay) {
+        // Tentar acionar o OneClick com o novo ID
+        window.fornpay.trigger('3olowe4hoo')
+      } else {
+        console.warn('OneClick script not loaded yet')
+        // Fallback: você pode adicionar uma lógica alternativa aqui
+      }
+    } catch (error) {
+      console.error('Error triggering OneClick downsell:', error)
+    }
+  }
+
+  const handleDeclineOffer = () => {
+    try {
+      // Redirecionar para o próximo downsell
+      window.location.href = "https://www.tindercheck.online/emergency2"
+    } catch (error) {
+      console.error('Error redirecting to next downsell:', error)
+    }
   }
 
   return (
@@ -97,35 +100,87 @@ export default function EmergencyDownsellPage() {
         {/* Special Offer */}
         <Card className="border-orange-200 bg-orange-50">
           <CardContent className="p-6 text-center">
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">🔥 SPECIAL LAST CHANCE OFFER</h2>
-            <p className="text-lg font-semibold text-orange-600 mb-4">
-              You were about to lose permanent access...
-            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4">🔥 LAST CHANCE SPECIAL OFFER</h2>
+            <p className="text-lg font-semibold text-orange-600 mb-4">You were about to lose permanent access...</p>
             <p className="text-gray-700 mb-6">
-              Since you've made it this far, we're making a special offer that will never be repeated.
+              Since you made it this far, we're making a special offer that will never be repeated.
             </p>
 
             {/* Pricing */}
             <div className="bg-white rounded-2xl p-6 shadow-lg mb-6">
-              <div className="text-2xl font-bold text-gray-400 line-through mb-2">$47</div>
+              <div className="text-2xl font-bold text-gray-400 line-through mb-2">$197</div>
               <div className="text-4xl font-bold text-orange-600 mb-4">$27</div>
-              <div className="text-sm text-gray-600 mb-4">42% discount - Today only</div>
+              <div className="text-sm text-gray-600 mb-4">86% discount - Today only</div>
 
-              {/* FIXED: Kiwify OneClick Buttons using exactly the same pattern as the working page */}
-              <div className="text-center">
-                <button 
-                  id="kiwify-upsell-trigger-EbQHpHf" 
-                  className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded border border-green-700 cursor-pointer text-lg mb-4 w-full transition-colors"
+              {/* Updated One-Click Downsell - Convertido para botões */}
+              <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
+                <button
+                  onClick={handleDownsellButton}
+                  data-fornpay="3olowe4hoo"
+                  data-downsell="https://www.tindercheck.online/emergency2"
+                  className="fornpay_btn"
+                  style={{
+                    background: "#3d94f6",
+                    backgroundImage: "linear-gradient(to bottom, #3d94f6, #1e62d0)",
+                    borderRadius: "10px",
+                    color: "#fff",
+                    fontFamily: "Arial",
+                    fontSize: "18px",
+                    fontWeight: "bold",
+                    padding: "15px 25px",
+                    border: "1px solid #337fed",
+                    textDecoration: "none",
+                    display: "block",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    marginBottom: "10px",
+                    width: "100%",
+                    boxSizing: "border-box",
+                    transition: "all 0.3s ease"
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.background = "#1e62d0"
+                    e.target.style.transform = "translateY(-2px)"
+                    e.target.style.boxShadow = "0 4px 12px rgba(61, 148, 246, 0.3)"
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.background = "#3d94f6"
+                    e.target.style.backgroundImage = "linear-gradient(to bottom, #3d94f6, #1e62d0)"
+                    e.target.style.transform = "translateY(0)"
+                    e.target.style.boxShadow = "none"
+                  }}
                 >
                   ✅ I WANT TO ACCESS THE SUSPICIOUS CONTENT NOW
                 </button>
-                
-                <div 
-                  id="kiwify-upsell-cancel-trigger" 
-                  className="mt-4 cursor-pointer text-base underline text-blue-600 hover:text-blue-800 transition-colors"
+                <button
+                  onClick={handleDeclineOffer}
+                  data-downsell="https://www.tindercheck.online/emergency2"
+                  className="fornpay_downsell"
+                  style={{
+                    color: "#004faa",
+                    fontFamily: "Arial",
+                    marginTop: "10px",
+                    fontSize: "16px",
+                    fontWeight: "100",
+                    textDecoration: "none",
+                    display: "block",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    background: "none",
+                    border: "none",
+                    padding: "0",
+                    width: "100%",
+                    transition: "color 0.3s ease"
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.color = "#374151"
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.color = "#004faa"
+                  }}
                 >
                   I don't want to access the suspicious content now
-                </div>
+                </button>
               </div>
             </div>
           </CardContent>
@@ -140,7 +195,7 @@ export default function EmergencyDownsellPage() {
                 <Camera className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                 <div>
                   <h4 className="font-semibold text-gray-800">Uncensored intimate photos</h4>
-                  <p className="text-sm text-gray-600">All the photos he/she sends to others</p>
+                  <p className="text-sm text-gray-600">All the photos he/she is sending to others</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
@@ -153,8 +208,8 @@ export default function EmergencyDownsellPage() {
               <div className="flex items-start gap-3">
                 <MapPin className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-semibold text-gray-800">Exact location of meetups</h4>
-                  <p className="text-sm text-gray-600">Where and when the hookups are arranged</p>
+                  <h4 className="font-semibold text-gray-800">Exact location of meetings</h4>
+                  <p className="text-sm text-gray-600">Where and when meetings are being arranged</p>
                 </div>
               </div>
             </div>
@@ -165,18 +220,16 @@ export default function EmergencyDownsellPage() {
         <Card className="border-red-500 bg-gradient-to-r from-red-50 to-orange-50">
           <CardContent className="p-6">
             <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold text-red-600 mb-2">⏰ TIME IS RUNNING OUT!</h3>
+              <h3 className="text-2xl font-bold text-red-600 mb-2">⏰ TIME RUNNING OUT!</h3>
               <p className="text-lg font-semibold text-gray-700">
                 This offer expires in: <span className="text-red-600 font-mono">{formatTime(timeLeft)}</span>
               </p>
             </div>
             <div className="text-center">
               <p className="text-gray-700 mb-4">
-                After the time expires, you will never have access to this information again.
+                After time runs out, you will never have access to this information again.
               </p>
-              <p className="text-red-600 font-semibold">
-                The data will be permanently deleted for confidentiality reasons.
-              </p>
+              <p className="text-red-600 font-semibold">The data will be permanently deleted for privacy reasons.</p>
             </div>
           </CardContent>
         </Card>
@@ -186,29 +239,85 @@ export default function EmergencyDownsellPage() {
           <CardContent className="p-6 text-center">
             <h3 className="text-xl font-bold text-green-700 mb-4">✅ Last chance to discover the truth</h3>
             <p className="text-gray-700 mb-6">
-              Don't let doubt consume you. For only $27, you'll have complete and permanent access to
-              all the information.
+              Don't let doubt consume you. For just $27, you'll have complete and definitive access to all the
+              information.
             </p>
 
-            {/* FIXED: Final CTA using the same pattern as the working page */}
-            <div className="text-center">
-              <button 
-                id="kiwify-upsell-trigger-EbQHpHf" 
-                className="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded border border-green-700 cursor-pointer text-lg mb-4 w-full max-w-md transition-colors"
+            {/* Repeat the downsell offer - Convertido para botões */}
+            <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
+              <button
+                onClick={handleDownsellButton}
+                data-fornpay="3olowe4hoo"
+                data-downsell="https://www.tindercheck.online/emergency2"
+                className="fornpay_btn"
+                style={{
+                  background: "#3d94f6",
+                  backgroundImage: "linear-gradient(to bottom, #3d94f6, #1e62d0)",
+                  borderRadius: "10px",
+                  color: "#fff",
+                  fontFamily: "Arial",
+                  fontSize: "18px",
+                  fontWeight: "bold",
+                  padding: "15px 25px",
+                  border: "1px solid #337fed",
+                  textDecoration: "none",
+                  display: "block",
+                  cursor: "pointer",
+                  textAlign: "center",
+                  marginBottom: "10px",
+                  width: "100%",
+                  boxSizing: "border-box",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.background = "#1e62d0"
+                  e.target.style.transform = "translateY(-2px)"
+                  e.target.style.boxShadow = "0 4px 12px rgba(61, 148, 246, 0.3)"
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.background = "#3d94f6"
+                  e.target.style.backgroundImage = "linear-gradient(to bottom, #3d94f6, #1e62d0)"
+                  e.target.style.transform = "translateY(0)"
+                  e.target.style.boxShadow = "none"
+                }}
               >
                 ✅ I WANT TO ACCESS THE SUSPICIOUS CONTENT NOW
               </button>
-              
-              <div 
-                id="kiwify-upsell-cancel-trigger" 
-                className="mt-4 cursor-pointer text-base underline text-blue-600 hover:text-blue-800 transition-colors"
+              <button
+                onClick={handleDeclineOffer}
+                data-downsell="https://www.tindercheck.online/emergency2"
+                className="fornpay_downsell"
+                style={{
+                  color: "#004faa",
+                  fontFamily: "Arial",
+                  marginTop: "10px",
+                  fontSize: "16px",
+                  fontWeight: "100",
+                  textDecoration: "none",
+                  display: "block",
+                  cursor: "pointer",
+                  textAlign: "center",
+                  background: "none",
+                  border: "none",
+                  padding: "0",
+                  width: "100%",
+                  transition: "color 0.3s ease"
+                }}
+                onMouseOver={(e) => {
+                  e.target.style.color = "#374151"
+                }}
+                onMouseOut={(e) => {
+                  e.target.style.color = "#004faa"
+                }}
               >
                 I don't want to access the suspicious content now
-              </div>
+              </button>
             </div>
           </CardContent>
         </Card>
       </div>
+      {/* One-click script */}
+      <script src="https://app.tribopay.com.br/js/oneclick.js"></script>
     </div>
   )
 }
