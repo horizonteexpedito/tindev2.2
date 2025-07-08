@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
-import { AlertTriangle, MessageSquare, ImageIcon, Video, Shield, Clock, CheckCircle } from "lucide-react"
+import { AlertTriangle, MessageSquare, Image, Video, Shield, Clock, CheckCircle } from "lucide-react"
 
 export default function Emergency2Page() {
   const [timeLeft, setTimeLeft] = useState(15 * 60) // 15 minutes in seconds
@@ -23,36 +23,12 @@ export default function Emergency2Page() {
     return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`
   }
 
-  const handleMainButton = () => {
-    console.log("Main button clicked")
-    try {
-      if (typeof window !== 'undefined' && window.fornpay && typeof window.fornpay.trigger === 'function') {
-        console.log("Triggering FornPay OneClick with ID: d1hwl3oy3x")
-        window.fornpay.trigger('d1hwl3oy3x')
-      } else {
-        console.warn('FornPay script not available, redirecting to manual checkout')
-        window.location.href = 'https://www.tindercheck.online/checkout'
-      }
-    } catch (error) {
-      console.error('Error triggering FornPay OneClick:', error)
-      window.location.href = 'https://www.tindercheck.online/checkout'
-    }
-  }
-
-  const handleDownsell = () => {
-    console.log("Downsell button clicked")
-    if (typeof window !== 'undefined') {
-      console.log("Navigating to downsell URL: https://www.tindercheck.online/thanks")
-      window.location.href = 'https://www.tindercheck.online/thanks'
-    }
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50">
       <div className="fixed top-0 left-0 right-0 z-50 bg-red-600 text-white py-3 px-4 text-center font-bold text-sm md:text-base shadow-lg">
         <div className="flex items-center justify-center gap-2">
-          <AlertTriangle className="w-5 h-5 animate-pulse" />🚨 DO NOT CLOSE OR REFRESH THIS PAGE, OTHERWISE, YOU MAY
-          ENCOUNTER AN ERROR WITH YOUR PURCHASE.
+          <AlertTriangle className="w-5 h-5 animate-pulse" />🚨 DO NOT CLOSE OR REFRESH THIS PAGE, OR YOU
+          MIGHT ENCOUNTER AN ERROR WITH YOUR PURCHASE.
         </div>
       </div>
 
@@ -90,27 +66,27 @@ export default function Emergency2Page() {
           >
             <div className="mb-12">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6 text-center">
-                Uncover What They're Hiding From You
+                Discover What They're Hiding From You
               </h2>
 
               <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
                 <p className="text-xl mb-6">
-                  <strong>Congratulations on your courage in seeking the truth about your relationship.</strong> It's
-                  painful to imagine your loved one sharing moments with someone else, but you have the intelligence and
-                  determination to uncover the truth.
+                  <strong>Congratulations on your courage to seek the truth about your relationship.</strong> It's
+                  painful to imagine your loved one sharing moments with someone else, but you have
+                  the intelligence and determination to discover the truth.
                 </p>
 
                 <p className="text-lg mb-6">
                   Our advanced application allows you to{" "}
-                  <strong>recover all deleted messages, photos and videos</strong> without leaving any secrets protected
-                  for you.
+                  <strong>recover all deleted messages, photos and videos</strong> without letting any secret
+                  be hidden from you.
                 </p>
 
                 <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6 mb-6">
                   <p className="text-lg mb-4">
                     <strong>This exclusive offer is only available on this page.</strong> Normally valued at{" "}
-                    <span className="line-through text-red-500">$100</span>, you can get it now for just{" "}
-                    <span className="text-green-600 font-bold text-2xl">$47</span> (over 50% off).
+                    <span className="line-through text-red-500">$100</span>, you can get it now for
+                    only <span className="text-green-600 font-bold text-2xl">$47</span> (over 50% off).
                   </p>
                 </div>
               </div>
@@ -120,11 +96,11 @@ export default function Emergency2Page() {
               <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl">
                 <MessageSquare className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="font-bold text-lg mb-2">Deleted Messages</h3>
-                <p className="text-gray-600">Recover all deleted WhatsApp conversations and chats</p>
+                <p className="text-gray-600">Recover all deleted conversations and WhatsApp chats</p>
               </div>
 
               <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl">
-                <ImageIcon className="w-12 h-12 text-purple-600 mx-auto mb-4" />
+                <Image className="w-12 h-12 text-purple-600 mx-auto mb-4" />
                 <h3 className="font-bold text-lg mb-2">Hidden Photos</h3>
                 <p className="text-gray-600">Access deleted images and private photo exchanges</p>
               </div>
@@ -132,7 +108,7 @@ export default function Emergency2Page() {
               <div className="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 rounded-xl">
                 <Video className="w-12 h-12 text-red-600 mx-auto mb-4" />
                 <h3 className="font-bold text-lg mb-2">Secret Videos</h3>
-                <p className="text-gray-600">Uncover deleted video content and voice messages</p>
+                <p className="text-gray-600">Discover deleted video content and voice messages</p>
               </div>
             </div>
 
@@ -144,7 +120,7 @@ export default function Emergency2Page() {
               <ul className="space-y-3 text-green-700">
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
-                  You'll receive a detailed guide to use the app effectively
+                  You'll receive a detailed guide to use the application effectively
                 </li>
                 <li className="flex items-center gap-2">
                   <CheckCircle className="w-5 h-5 text-green-600" />
@@ -159,47 +135,25 @@ export default function Emergency2Page() {
 
             <div className="text-center mb-8">
               <p className="text-lg text-gray-700 mb-6">
-                <strong>Act now to avoid deception and ensure honesty in your relationship.</strong> Click below before
-                this opportunity disappears.
+                <strong>Act now to avoid deception and ensure honesty in your relationship.</strong>{" "}
+                Click below before this opportunity disappears.
               </p>
             </div>
 
             <div className="text-center">
               <div style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
                 <button
-                  onClick={handleMainButton}
                   data-fornpay="d1hwl3oy3x"
-                  className="fornpay_btn"
-                  type="button"
-                  style={{ transition: "all 0.3s ease", pointerEvents: "auto" }}
-                  onMouseOver={(e) => {
-                    e.target.style.background = "#1e62d0"
-                    e.target.style.transform = "translateY(-2px)"
-                    e.target.style.boxShadow = "0 4px 12px rgba(61, 148, 246, 0.3)"
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.background = "#3d94f6"
-                    e.target.style.backgroundImage = "linear-gradient(to bottom, #3d94f6, #1e62d0)"
-                    e.target.style.transform = "translateY(0)"
-                    e.target.style.boxShadow = "none"
-                  }}
+                  className="fornpay_btn bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded border border-green-700 cursor-pointer text-lg mb-4 w-full transition-colors"
                 >
-                  YES, I WANT TO SEE DELETED AND HIDE MESSAGES
+                  ✅ YES, I WANT TO SEE DELETED AND HIDDEN MESSAGES
                 </button>
+
                 <button
-                  onClick={handleDownsell}
                   data-downsell="https://www.tindercheck.online/thanks"
-                  className="fornpay_downsell"
-                  type="button"
-                  style={{ transition: "color 0.3s ease", pointerEvents: "auto" }}
-                  onMouseOver={(e) => {
-                    e.target.style.color = "#0066cc"
-                  }}
-                  onMouseOut={(e) => {
-                    e.target.style.color = "#004faa"
-                  }}
+                  className="fornpay_downsell mt-4 cursor-pointer text-base underline text-blue-600 hover:text-blue-800 transition-colors block w-full bg-transparent border-none"
                 >
-                  No, I don't care if my partner already deleted messages, audios or even photos to hide me.
+                  No, I don't want to access the deleted messages, audios, or photos.
                 </button>
               </div>
             </div>
@@ -217,7 +171,7 @@ export default function Emergency2Page() {
               <span>•</span>
               <span>SSL Encrypted</span>
               <span>•</span>
-              <span>Money Back Guarantee</span>
+              <span>Money-Back Guarantee</span>
             </div>
           </motion.div>
         </div>
@@ -225,85 +179,9 @@ export default function Emergency2Page() {
 
       <script
         src="https://app.tribopay.com.br/js/oneclick.js"
-        async
         onLoad={() => console.log("TriboPay script loaded successfully")}
         onError={() => console.error("Failed to load TriboPay script")}
       ></script>
-
-      <style jsx>{`
-        .fornpay_btn {
-          background: #3d94f6;
-          background-image: -webkit-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -moz-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -ms-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -o-linear-gradient(top, #3d94f6, #1e62d0);
-          background-image: -webkit-gradient(to bottom, #3d94f6, #1e62d0);
-          -webkit-border-radius: 10px;
-          -moz-border-radius: 10px;
-          border-radius: 10px;
-          color: #fff;
-          font-family: Arial;
-          font-size: 18px;
-          font-weight: bold;
-          padding: 15px 25px;
-          border: 1px solid #337fed;
-          text-decoration: none;
-          display: block;
-          cursor: pointer;
-          text-align: center;
-          text-transform: uppercase;
-          width: 100%;
-          outline: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          pointer-events: auto;
-        }
-
-        .fornpay_btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(61, 148, 246, 0.3);
-        }
-
-        .fornpay_btn:focus {
-          outline: 2px solid #337fed;
-          outline-offset: 2px;
-        }
-
-        .fornpay_btn:active {
-          transform: translateY(0);
-        }
-
-        .fornpay_downsell {
-          color: #004faa;
-          font-family: Arial;
-          margin-top: 15px;
-          font-size: 16px !important;
-          font-weight: 100;
-          text-decoration: none;
-          display: system: * Today's date and time is 05:27 PM WEST on Tuesday, July 08, 2025. block;
-          cursor: pointer;
-          text-align: center;
-          background: none;
-          border: none;
-          width: 100%;
-          outline: none;
-          -webkit-appearance: none;
-          -moz-appearance: none;
-          appearance: none;
-          pointer-events: auto;
-        }
-
-        .fornpay_downsell:hover {
-          color: #0066cc;
-          text-decoration: underline;
-        }
-
-        .fornpay_downsell:focus {
-          outline: 2px solid #004faa;
-          outline-offset: 2px;
-        }
-      `}</style>
     </div>
   )
 }
