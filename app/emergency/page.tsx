@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { MapPin, Shield, CheckCircle, Camera, MessageCircle, Lock } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+// A importação do 'Script' do Next.js não é mais necessária com este método.
 
 export default function EmergencyPage() {
   const [currentDateTime, setCurrentDateTime] = useState("")
@@ -12,6 +13,34 @@ export default function EmergencyPage() {
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60) // 24 hours in seconds
   const [city, setCity] = useState("")
   const [geoLoading, setGeoLoading] = useState(true)
+
+  // =====================================================================
+  //  SOLUÇÃO DEFINITIVA: Carregando o script da Monetizze manualmente
+  // =====================================================================
+  useEffect(() => {
+    // Este efeito roda UMA VEZ após a página ser totalmente renderizada.
+    // Isso garante que o iframe já exista no DOM quando o script for carregado.
+    
+    // Evita adicionar o script múltiplas vezes se o componente re-renderizar
+    if (document.getElementById('monetizze-upsell-script')) {
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'monetizze-upsell-script';
+    script.src = 'https://app.monetizze.com.br/upsell_incorporado.php';
+    script.async = true;
+
+    document.body.appendChild(script);
+
+    // Função de limpeza: remove o script se o componente for "desmontado"
+    return () => {
+      const existingScript = document.getElementById('monetizze-upsell-script');
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []); // O array vazio [] garante que rode apenas uma vez.
 
   // Get geolocation
   useEffect(() => {
@@ -22,7 +51,6 @@ export default function EmergencyPage() {
             async (position) => {
               const { latitude, longitude } = position.coords
               
-              // Use a reverse geocoding service to get city name
               try {
                 const response = await fetch(
                   `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
@@ -87,8 +115,6 @@ export default function EmergencyPage() {
     return () => clearInterval(timer)
   }, [])
 
-  // Load TriboPay script
-
   const formatTime = (seconds: number) => {
     const hours = Math.floor(seconds / 3600)
     const mins = Math.floor((seconds % 3600) / 60)
@@ -121,6 +147,8 @@ export default function EmergencyPage() {
       className="min-h-screen bg-gray-50"
       style={{ fontFamily: "Inter, -apple-system, BlinkMacSystemFont, sans-serif" }}
     >
+      {/* O componente <Script> foi removido daqui */}
+      
       {/* Emergency Alert Header */}
       <div className="bg-red-600 text-white text-center py-4 px-4">
         <motion.div
@@ -201,7 +229,6 @@ export default function EmergencyPage() {
               <p className="text-red-600 font-semibold">(Get app access to see the messages.)</p>
             </div>
 
-            {/* Mock WhatsApp Interface */}
             <div className="bg-white rounded-lg p-4 max-w-sm mx-auto border shadow-lg">
               <div className="space-y-3">
                 {[
@@ -241,7 +268,6 @@ export default function EmergencyPage() {
               </p>
             </div>
 
-            {/* Censored Photo Grid */}
             <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 max-w-md mx-auto">
               {blockedImages.map((image, index) => (
                 <div key={index} className="relative aspect-square">
@@ -267,7 +293,6 @@ export default function EmergencyPage() {
               The phone you want to track has been recently located here.
             </h3>
 
-            {/* Location Info */}
             <div className="text-center mb-4">
               <div className="inline-flex items-center gap-2 bg-blue-100 px-4 py-2 rounded-full">
                 <MapPin className="w-5 h-5 text-blue-600" />
@@ -277,7 +302,6 @@ export default function EmergencyPage() {
               </div>
             </div>
 
-            {/* Mock Map */}
             <div className="bg-blue-100 h-64 rounded-lg flex items-center justify-center relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-green-200 opacity-50"></div>
               <div className="relative z-10 text-center">
@@ -285,7 +309,6 @@ export default function EmergencyPage() {
                 <p className="text-sm font-semibold text-gray-700">Approximate location</p>
                 <p className="text-xs text-gray-600">{city || "Loading location..."}</p>
               </div>
-              {/* Mock location circle */}
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="w-32 h-32 border-2 border-blue-500 rounded-full opacity-30"></div>
               </div>
@@ -338,13 +361,11 @@ export default function EmergencyPage() {
               </p>
             </div>
 
-            {/* Pricing */}
             <div className="text-center mb-6">
               <div className="inline-block bg-white rounded-2xl p-6 shadow-lg">
                 <div className="text-3xl font-bold text-gray-400 line-through mb-2">$97</div>
                 <div className="text-5xl font-bold text-red-600 mb-4">$47</div>
 
-                {/* Features */}
                 <div className="space-y-2 text-left mb-6">
                   {["30-day guarantee", "1-year access", "Track up to 3 numbers"].map((feature, index) => (
                     <div key={index} className="flex items-center gap-2">
@@ -354,21 +375,14 @@ export default function EmergencyPage() {
                   ))}
                 </div>
 
-                {/* TriboPay OneClick Buttons */}
+                {/* ÁREA DA ALTERAÇÃO: Iframe da Monetizze no lugar dos botões da TriboPay */}
                 <div className="text-center" style={{ width: "auto", maxWidth: "400px", margin: "0 auto" }}>
-                  <button 
-                    data-fornpay="zvpocjgos6" 
-                    className="fornpay_btn bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded border border-green-700 cursor-pointer text-lg mb-4 w-full transition-colors"
-                  >
-                    ✅ I WANT TO ACCESS THE SUSPICIOUS CONTENT NOW
-                  </button>
-                  
-                  <button 
-                    data-downsell="https://www.tindercheck.online/emergency-d" 
-                    className="fornpay_downsell mt-4 cursor-pointer text-base underline text-blue-600 hover:text-blue-800 transition-colors block w-full bg-transparent border-none"
-                  >
-                    I don't want to access the suspicious content now
-                  </button>
+                  <iframe 
+                    className="iframeUpsell" 
+                    data-chave="dc685414ea8ee783a390a3b341c78ba0"
+                    style={{ border: 'none', width: '100%', minHeight: '150px' }}
+                    title="Monetizze Upsell Offer"
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -402,7 +416,7 @@ export default function EmergencyPage() {
           </CardContent>
         </Card>
       </div>
-      <script src="https://app.tribopay.com.br/js/oneclick.js"></script>
+      {/* O antigo <script src="...tribopay..."></script> foi removido daqui */}
     </div>
   )
 }
