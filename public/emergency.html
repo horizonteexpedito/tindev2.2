@@ -4,14 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emergency Alert</title>
-    <!-- Inclui o Tailwind CSS via CDN -->
+    
+    <!-- Inclui o Tailwind CSS via CDN para os estilos funcionarem -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Inclui a fonte Inter do Google Fonts -->
+    
+    <!-- Inclui a fonte Inter do Google Fonts para o design correto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Script da Monetizze para Upsell One Click, conforme solicitado -->
+    <script type="text/javascript" src="https://app.monetizze.com.br/upsell_incorporado.php"></script>
+
     <style>
-        /* Define a fonte Inter como padrão e adiciona animação */
+        /* Define a fonte padrão e adiciona a animação de entrada */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
@@ -42,7 +48,7 @@
 
     <div class="max-w-4xl mx-auto px-4 py-6 space-y-8">
         <!-- Algorithm Detection -->
-        <div class="border border-orange-200 bg-orange-50 rounded-lg shadow">
+        <div class="border border-orange-200 bg-orange-50 rounded-lg shadow-sm">
             <div class="p-6 text-center">
                 <h2 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
                     Our algorithm based on numbers, data, using words and photos, detected suspicious messages and files on WhatsApp...
@@ -54,83 +60,28 @@
             </div>
         </div>
 
-        <!-- Profile Photo and Phone (será exibido via JS se houver dados) -->
-        <div id="profile-card" class="border rounded-lg shadow" style="display: none;">
+        <!-- Profile Photo and Phone (será exibido via JS se houver dados na URL) -->
+        <div id="profile-card" class="border rounded-lg shadow-sm bg-white" style="display: none;">
             <div class="p-6 text-center">
-                <img id="profile-photo" src="/placeholder.svg" alt="Profile" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-4 border-4 border-green-500" style="display: none;">
+                <img id="profile-photo" src="" alt="Profile" class="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover mx-auto mb-4 border-4 border-green-500" style="display: none;">
                 <p id="phone-number" class="text-xl font-semibold text-green-600"></p>
             </div>
         </div>
 
         <!-- Suspicious Content Summary -->
-        <div class="border border-red-200 bg-red-50 rounded-lg shadow">
+        <div class="border border-red-200 bg-red-50 rounded-lg shadow-sm">
             <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">
                     We found <span class="text-red-600 font-bold">58</span> suspicious messages:
                 </h3>
-                <div class="space-y-3">
-                    <!-- Item 1 -->
-                    <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span class="text-sm sm:text-base">
-                            <span class="text-red-600 font-bold">58</span> suspicious messages.
-                        </span>
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span class="text-sm sm:text-base">
-                            <span class="text-red-600 font-bold">13</span> posts contained the word/similar <span class="text-red-600 font-bold">"delicious"</span>.
-                        </span>
-                    </div>
-                    <!-- Item 3 -->
-                    <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span class="text-sm sm:text-base">
-                            <span class="text-red-600 font-bold">41</span> messages contained the word/similar <span class="text-red-600 font-bold">"Love"</span>.
-                        </span>
-                    </div>
-                    <!-- Item 4 -->
-                    <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span class="text-sm sm:text-base">
-                            <span class="text-red-600 font-bold">20</span> photos and 5 videos are hidden by a password on the phone.
-                        </span>
-                    </div>
-                    <!-- Item 5 -->
-                    <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span class="text-sm sm:text-base">
-                            <span class="text-red-600 font-bold">8</span> messages contained the word/similar <span class="text-red-600 font-bold">"Secret"</span>.
-                        </span>
-                    </div>
-                    <!-- Item 6 -->
-                    <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span class="text-sm sm:text-base">
-                            <span class="text-red-600 font-bold">2</span> archived conversations have been flagged as suspicious.
-                        </span>
-                    </div>
-                    <!-- Item 7 -->
-                    <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span class="text-sm sm:text-base">
-                            <span class="text-red-600 font-bold">9</span> disappearing images recently received have also been identified and restored.
-                        </span>
-                    </div>
-                    <!-- Item 8 -->
-                    <div class="flex items-start gap-3">
-                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        <span class="text-sm sm:text-base">
-                            <span class="text-red-600 font-bold">7</span> suspicious locations have been detected near <span id="city-placeholder">your area</span>.
-                        </span>
-                    </div>
+                <div id="suspicious-stats-list" class="space-y-3">
+                    <!-- Conteúdo será gerado por JavaScript -->
                 </div>
             </div>
         </div>
 
         <!-- WhatsApp Messages Detection -->
-        <div class="border border-blue-200 bg-blue-50 rounded-lg shadow">
+        <div class="border border-blue-200 bg-blue-50 rounded-lg shadow-sm">
             <div class="p-6">
                 <div class="text-center mb-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">We detected suspicious messages on WhatsApp.</h3>
@@ -183,16 +134,16 @@
         </div>
 
         <!-- Nudity Detection -->
-        <div class="border border-purple-200 bg-purple-50 rounded-lg shadow">
+        <div class="border border-purple-200 bg-purple-50 rounded-lg shadow-sm">
             <div class="p-6">
                 <div class="text-center mb-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-2">We detected photos and videos containing nudity.</h3>
                     <p class="text-red-600 font-semibold">(Get app access to see the uncensored photos.)</p>
                 </div>
                 <div class="grid grid-cols-3 sm:grid-cols-4 gap-2 max-w-md mx-auto">
-                    <!-- Images -->
+                    <!-- Imagens Bloqueadas -->
                     <div class="relative aspect-square">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&h=150&fit=crop&crop=face" alt="Censored 1" class="w-full h-full object-cover rounded-lg" style="filter: blur(12px) brightness(0.7);">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" alt="Censored 1" class="w-full h-full object-cover rounded-lg" style="filter: blur(12px) brightness(0.7);">
                         <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-lg">
                             <svg class="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
                         </div>
@@ -232,7 +183,7 @@
         </div>
 
         <!-- Location Tracking -->
-        <div class="border border-green-200 bg-green-50 rounded-lg shadow">
+        <div class="border border-green-200 bg-green-50 rounded-lg shadow-sm">
             <div class="p-6">
                 <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">The phone you want to track has been recently located here.</h3>
                 <div class="text-center mb-4">
@@ -256,7 +207,7 @@
         </div>
 
         <!-- App Promotion -->
-        <div class="border border-gray-200 bg-white rounded-lg shadow">
+        <div class="border border-gray-200 bg-white rounded-lg shadow-sm">
             <div class="p-6 text-center">
                 <div class="mb-6">
                     <div class="w-24 h-24 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mx-auto mb-4 flex items-center justify-center">
@@ -276,7 +227,7 @@
         </div>
         
         <!-- Time-Sensitive Offer -->
-        <div class="border border-red-500 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg shadow">
+        <div class="border border-red-500 bg-gradient-to-r from-red-50 to-orange-50 rounded-lg shadow-sm">
             <div class="p-6">
                 <div class="text-center mb-6">
                     <h3 class="text-2xl font-bold text-red-600 mb-2">🔥 52% OFF TODAY ONLY!</h3>
@@ -290,29 +241,27 @@
                         <div class="text-3xl font-bold text-gray-400 line-through mb-2">$97</div>
                         <div class="text-5xl font-bold text-red-600 mb-4">$47</div>
                         <div class="space-y-2 text-left mb-6">
-                            <!-- Feature 1 -->
                             <div class="flex items-center gap-2">
                                 <svg class="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                 <span class="text-sm">30-day guarantee</span>
                             </div>
-                             <!-- Feature 2 -->
                             <div class="flex items-center gap-2">
                                 <svg class="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                 <span class="text-sm">1-year access</span>
                             </div>
-                             <!-- Feature 3 -->
                             <div class="flex items-center gap-2">
                                 <svg class="w-5 h-5 text-green-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                                 <span class="text-sm">Track up to 3 numbers</span>
                             </div>
                         </div>
+                        <!-- Iframe da Monetizze -->
                         <div class="text-center" style="width: auto; max-width: 400px; margin: 0 auto;">
-                            <button data-fornpay="zvpocjgos6" class="fornpay_btn bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded border border-green-700 cursor-pointer text-lg mb-4 w-full transition-colors">
-                                ✅ I WANT TO ACCESS THE SUSPICIOUS CONTENT NOW
-                            </button>
-                            <button data-downsell="https://www.tindercheck.online/emergency-d" class="fornpay_downsell mt-4 cursor-pointer text-base underline text-blue-600 hover:text-blue-800 transition-colors block w-full bg-transparent border-none">
-                                I don't want to access the suspicious content now
-                            </button>
+                            <iframe 
+                                class="iframeUpsell" 
+                                data-chave="dc685414ea8ee783a390a3b341c78ba0"
+                                style="border:none; width:100%; min-height: 150px;"
+                                title="Monetizze Upsell Offer">
+                            </iframe>
                         </div>
                     </div>
                 </div>
@@ -320,7 +269,7 @@
         </div>
 
         <!-- Guarantee -->
-        <div class="border border-green-200 bg-green-50 rounded-lg shadow">
+        <div class="border border-green-200 bg-green-50 rounded-lg shadow-sm">
             <div class="p-6 text-center">
                 <div class="w-20 h-20 bg-green-500 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <svg class="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
@@ -335,10 +284,10 @@
         </div>
     </div>
 
-    <!-- JavaScript para funcionalidade dinâmica -->
+    <!-- JavaScript para toda a funcionalidade dinâmica da página -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Função para formatar números com zero à esquerda
+            // Função para formatar números com zero à esquerda (ex: 7 -> "07")
             const pad = (num) => String(num).padStart(2, '0');
 
             // 1. Definir data e hora atuais
@@ -354,34 +303,25 @@
             const urlParams = new URLSearchParams(window.location.search);
             const tel = urlParams.get("tel");
             const photo = urlParams.get("photo");
-
             const profileCard = document.getElementById('profile-card');
             const phoneNumberEl = document.getElementById('phone-number');
             const profilePhotoEl = document.getElementById('profile-photo');
-
             let hasProfileData = false;
-            if (tel) {
-                phoneNumberEl.textContent = tel;
-                hasProfileData = true;
-            } else {
-                 phoneNumberEl.textContent = "WhatsApp Research";
-                 hasProfileData = true;
-            }
-
+            
+            phoneNumberEl.textContent = tel || "WhatsApp Research";
+            
             if (photo) {
                 profilePhotoEl.src = photo;
                 profilePhotoEl.style.display = 'block';
                 hasProfileData = true;
             }
-
-            if(hasProfileData){
+            if(tel || photo){
                 profileCard.style.display = 'block';
             }
 
             // 3. Iniciar contador regressivo de 24 horas
             let timeLeft = 24 * 60 * 60; // 24 horas em segundos
             const countdownTimerEl = document.getElementById('countdown-timer');
-
             const updateTimer = () => {
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
@@ -394,54 +334,72 @@
                 countdownTimerEl.textContent = `${h}:${m}:${s}`;
                 timeLeft--;
             };
-
             const timerInterval = setInterval(updateTimer, 1000);
             updateTimer(); // Chama uma vez para não esperar 1s para exibir
 
-            // 4. Obter geolocalização e atualizar o texto
-            const setCity = (cityName) => {
-                const defaultCity = "your area";
-                const finalCity = cityName || defaultCity;
+            // 4. Obter geolocalização e gerar a lista de estatísticas dinamicamente
+            const renderStats = (cityName) => {
+                const finalCity = cityName || "your area";
+                const stats = [
+                    { count: 58, description: "suspicious messages" },
+                    { count: 13, keyword: "delicious", description: "posts contained the word/similar" },
+                    { count: 41, keyword: "Love", description: "messages contained the word/similar" },
+                    { count: 20, description: "photos and 5 videos are hidden by a password on the phone" },
+                    { count: 8, keyword: "Secret", description: "messages contained the word/similar" },
+                    { count: 2, description: "archived conversations have been flagged as suspicious" },
+                    { count: 9, description: "disappearing images recently received have also been identified and restored" },
+                    { count: 7, description: `suspicious locations have been detected near ${finalCity}` },
+                ];
+                
+                const statsContainer = document.getElementById('suspicious-stats-list');
+                statsContainer.innerHTML = ''; // Limpa antes de adicionar
+                stats.forEach(stat => {
+                    let textHtml = `<span class="text-red-600 font-bold">${stat.count}</span> ${stat.description}`;
+                    if (stat.keyword) {
+                        textHtml += ` <span class="text-red-600 font-bold">"${stat.keyword}"</span>`;
+                    }
+                    textHtml += '.';
 
-                document.getElementById('city-placeholder').textContent = finalCity;
+                    const statDiv = document.createElement('div');
+                    statDiv.className = 'flex items-start gap-3';
+                    statDiv.innerHTML = `
+                        <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        <span class="text-sm sm:text-base">${textHtml}</span>
+                    `;
+                    statsContainer.appendChild(statDiv);
+                });
+            };
+
+            const setCityAndRender = (cityName) => {
+                const finalCity = cityName || "your area";
                 document.getElementById('location-text').textContent = `Last seen in ${finalCity}`;
                 document.getElementById('location-city-text').textContent = finalCity;
-                // Atualiza também a lista de estatísticas
-                const locationStatEl = document.querySelector('#city-placeholder').parentElement;
-                if(locationStatEl){
-                    locationStatEl.innerHTML = `<span class="text-red-600 font-bold">7</span> suspicious locations have been detected near ${finalCity}.`;
-                }
-
+                renderStats(finalCity); // Re-renderiza as estatísticas com a cidade correta
             };
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(
                     (position) => {
                         const { latitude, longitude } = position.coords;
-                        // Usar API para geocodificação reversa
                         fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
                             .then(response => response.json())
                             .then(data => {
-                                setCity(data.city || data.locality);
+                                setCityAndRender(data.city || data.locality);
                             })
                             .catch(error => {
                                 console.error("Error getting city:", error);
-                                setCity(null); // Usa o valor padrão
+                                setCityAndRender(null); // Usa o valor padrão
                             });
                     },
                     (error) => {
                         console.error("Error getting location:", error);
-                        setCity(null); // Usa o valor padrão
+                        setCityAndRender(null); // Usa o valor padrão
                     }
                 );
             } else {
-                setCity(null); // Navegador não suporta geolocalização
+                setCityAndRender(null); // Navegador não suporta geolocalização
             }
         });
     </script>
-    
-    <!-- Script da TriboPay -->
-    <script src="https://app.tribopay.com.br/js/oneclick.js"></script>
-
 </body>
 </html>
