@@ -113,7 +113,6 @@ export default function SigiloX() {
   const [countrySearch, setCountrySearch] = useState("")
 
   const countries = [
-    { code: "+55", name: "Brazil", flag: "🇧🇷", placeholder: "(11) 99999-9999" },
 { code: "+1", name: "United States", flag: "🇺🇸", placeholder: "(555) 123-4567" },
 { code: "+1", name: "Canada", flag: "🇨🇦", placeholder: "(555) 123-4567" },
 { code: "+44", name: "United Kingdom", flag: "🇬🇧", placeholder: "7911 123456" },
@@ -123,6 +122,7 @@ export default function SigiloX() {
 { code: "+34", name: "Spain", flag: "🇪🇸", placeholder: "612 34 56 78" },
 { code: "+351", name: "Portugal", flag: "🇵🇹", placeholder: "912 345 678" },
 { code: "+52", name: "Mexico", flag: "🇲🇽", placeholder: "55 1234 5678" },
+{ code: "+55", name: "Brazil", flag: "🇧🇷", placeholder: "(11) 99999-9999" },
 { code: "+54", name: "Argentina", flag: "🇦🇷", placeholder: "11 1234-5678" },
 { code: "+56", name: "Chile", flag: "🇨🇱", placeholder: "9 1234 5678" },
 { code: "+57", name: "Colombia", flag: "🇨🇴", placeholder: "300 1234567" },
