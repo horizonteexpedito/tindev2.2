@@ -12,6 +12,59 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- ======================================================= -->
+    <!--     CÓDIGO MUNDPAY ADICIONADO AQUI                      -->
+    <!-- ======================================================= -->
+    <style>
+      .mndpay_container {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          max-width: 36rem;
+          margin: 0 auto;
+          gap: 1rem;
+      }
+
+      .mndpay_btn {
+        background: #043006;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 18px;
+        font-weight: 100;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .mndpay_downsell {
+        background: #DC2626;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        color: #FFFFFF;
+        font-family: Arial;
+        font-size: 18px;
+        font-weight: 100;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      @media (min-width: 640px) {
+        .mndpay_container {
+          flex-direction: column;
+        }
+      }
+    </style>
+    <script src="https://upsell.mundpay.com/script.js"></script>
     
     <style>
         /* Apply the font family and a fallback */
@@ -64,21 +117,12 @@
                     <div class="text-4xl font-bold text-orange-600 mb-4">$27</div>
                     <div class="text-sm text-gray-600 mb-4">42% discount - Today only</div>
 
-                    <!-- TriboPay OneClick Buttons -->
-                    <div class="text-center">
-                        <div style="width: auto; max-width: 400px; margin: 0 auto;">
-                            <button 
-                                data-fornpay="3olowe4hoo" 
-                                class="fornpay_btn bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded border border-green-700 cursor-pointer text-lg mb-4 w-full transition-colors">
-                                ✅ I WANT TO ACCESS THE SUSPICIOUS CONTENT NOW
-                            </button>
-                            
-                            <button 
-                                data-downsell="https://www.tindercheck.online/emergency2" 
-                                class="fornpay_downsell mt-4 cursor-pointer text-base underline text-blue-600 hover:text-blue-800 transition-colors block w-full bg-transparent border-0">
-                                I don't want to access the suspicious content now
-                            </button>
-                        </div>
+                    <!-- ======================================================= -->
+                    <!-- ÁREA DE ALTERAÇÃO: TRIBOPAY REMOVIDA, MUNDPAY INSERIDA  -->
+                    <!-- ======================================================= -->
+                    <div class="mndpay_container">
+                      <a href="javascript:void(0)" data-mndpay="01982e84-00e5-7271-8b7b-dc589179c917" class="mndpay_btn">I WANT TO ACCESS SUSPICIOUS WHATSAPP CONTENT</a>
+                      <a href="javascript:void(0)" data-downsell="https://www.tindercheck.online/emergency2.html" class="mndpay_downsell">I don't want to access</a>
                     </div>
                 </div>
             </div>
@@ -154,21 +198,12 @@
                     all the information.
                 </p>
 
-                <!-- Final CTA with TriboPay -->
-                <div class="text-center">
-                    <div style="width: auto; max-width: 400px; margin: 0 auto;">
-                        <button 
-                            data-fornpay="3olowe4hoo" 
-                            class="fornpay_btn bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded border border-green-700 cursor-pointer text-lg mb-4 w-full transition-colors">
-                            ✅ I WANT TO ACCESS THE SUSPICIOUS CONTENT NOW
-                        </button>
-                        
-                        <button 
-                            data-downsell="https://www.tindercheck.online/emergency2" 
-                            class="fornpay_downsell mt-4 cursor-pointer text-base underline text-blue-600 hover:text-blue-800 transition-colors block w-full bg-transparent border-0">
-                            I don't want to access the suspicious content now
-                        </button>
-                    </div>
+                <!-- ======================================================= -->
+                <!-- ÁREA DE ALTERAÇÃO: TRIBOPAY REMOVIDA, MUNDPAY INSERIDA  -->
+                <!-- ======================================================= -->
+                <div class="mndpay_container">
+                  <a href="javascript:void(0)" data-mndpay="01982e84-00e5-7271-8b7b-dc589179c917" class="mndpay_btn">I WANT TO ACCESS SUSPICIOUS WHATSAPP CONTENT</a>
+                  <a href="javascript:void(0)" data-downsell="https://www.tindercheck.online/emergency2.html" class="mndpay_downsell">I don't want to access</a>
                 </div>
             </div>
         </div>
@@ -199,8 +234,5 @@
         });
     </script>
     
-    <!-- TriboPay Script -->
-    <script src="https://app.tribopay.com.br/js/oneclick.js"></script>
-
 </body>
 </html>

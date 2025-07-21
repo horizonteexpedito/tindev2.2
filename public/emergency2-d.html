@@ -14,9 +14,57 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     
     <!-- ======================================================= -->
-    <!--     MONETIZZE SCRIPT ADDED HERE                       -->
+    <!--     CÓDIGO MUNDPAY ADICIONADO AQUI                      -->
     <!-- ======================================================= -->
-    <script type="text/javascript" src="https://app.monetizze.com.br/upsell_incorporado.php"></script>
+    <style>
+      .mndpay_container {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          max-width: 36rem;
+          margin: 0 auto;
+          gap: 1rem;
+      }
+
+      .mndpay_btn {
+        background: #032203;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        color: #ffffff;
+        font-family: Arial;
+        font-size: 18px;
+        font-weight: 100;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .mndpay_downsell {
+        background: #DC2626;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        color: #FFFFFF;
+        font-family: Arial;
+        font-size: 18px;
+        font-weight: 100;
+        padding: 10px 20px;
+        text-decoration: none;
+        display: block;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      @media (min-width: 640px) {
+        .mndpay_container {
+          flex-direction: column;
+        }
+      }
+    </style>
+    <script src="https://upsell.mundpay.com/script.js"></script>
 
     <style>
         body {
@@ -117,20 +165,11 @@
                 </div>
 
                 <!-- ======================================================= -->
-                <!-- MONETIZZE AREA: CHANGE THIS FOR YOUR DOWNSELL PRODUCT   -->
+                <!-- ÁREA DE ALTERAÇÃO: MONETIZZE REMOVIDA, MUNDPAY INSERIDA -->
                 <!-- ======================================================= -->
-                <div class="text-center">
-                    <!-- 
-                        IMPORTANT: Change the 'data-chave' below to the key 
-                        for your new $27 downsell product in Monetizze!
-                        This is a different key from your upsell product.
-                    -->
-                    <iframe 
-                        class="iframeUpsell" 
-                        data-chave="YOUR_NEW_DOWNSELL_PRODUCT_KEY_HERE"
-                        style="border:none; width:100%; min-height: 220px;"
-                        title="Monetizze Downsell Offer">
-                    </iframe>
+                <div class="mndpay_container">
+                  <a href="javascript:void(0)" data-mndpay="01982e88-cbd8-7197-9ec1-3e52c4fe72c0" class="mndpay_btn">I WANT TO SEE DELETED AND HIDDEN MESSAGES</a>
+                  <a href="javascript:void(0)" data-downsell="https://mundpay.com/" class="mndpay_downsell">view messages later</a>
                 </div>
             </div>
 
