@@ -1,13 +1,38 @@
 import { type NextRequest, NextResponse } from "next/server"
 
-// Cache em memória para armazenar os resultados e evitar chamadas repetidas à API.
-// Isto ajuda a evitar o erro "429 Too Many Requests".
-// Nota: Este cache é reiniciado sempre que a instância da sua função serverless é reiniciada.
-const phoneCache = new Map<string, any>()
+// Enhanced cache with TTL to prevent stale data and reduce API calls
+interface CacheEntry {
+  data: any
+  timestamp: number
+  ttl: number // Time to live in milliseconds
+}
 
-// Função principal que lida com as requisições POST
+const phoneCache = new Map<string, CacheEntry>()
+const CACHE_TTL = 24 * 60 * 60 * 1000 // 24 hours
+const RATE_LIMIT_CACHE_TTL = 60 * 1000 // 1 minute for rate limited responses
+
+let lastRequestTime = 0
+const MIN_REQUEST_INTERVAL = 1000 // Minimum 1 second between requests
+let consecutiveRateLimits = 0
+
+function isCacheValid(entry: CacheEntry): boolean {
+  return Date.now() - entry.timestamp < entry.ttl
+}
+
+function cleanExpiredCache() {
+  const now = Date.now()
+  for (const [key, entry] of phoneCache.entries()) {
+    if (now - entry.timestamp > entry.ttl) {
+      phoneCache.delete(key)
+    }
+  }
+}
+
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
 export async function POST(request: NextRequest) {
-  // JSON-default de retorno em caso de falha da API externa ou foto privada
   const fallbackPayload = {
     success: true,
     result:
@@ -16,78 +41,105 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    // 1. Pega o número de telefone do corpo da requisição
     const { phone } = await request.json()
 
     if (!phone) {
-      return NextResponse.json(
-        { success: false, error: "Número de telefone é obrigatório" },
-        { status: 400 },
-      )
+      return NextResponse.json({ success: false, error: "Número de telefone é obrigatório" }, { status: 400 })
     }
 
-    // 2. Limpa e formata o número de telefone (exemplo para Brasil)
     const cleanPhone = phone.replace(/[^0-9]/g, "")
-    // Adapte esta lógica se precisar de outros códigos de país
-    let fullNumber = cleanPhone
-    if (!cleanPhone.startsWith("55") && cleanPhone.length >= 11) {
-      fullNumber = "55" + cleanPhone
-    }
+    const fullNumber = cleanPhone
 
-    // --- VERIFICAÇÃO DE CACHE ---
-    if (phoneCache.has(fullNumber)) {
+    cleanExpiredCache()
+    const cachedEntry = phoneCache.get(fullNumber)
+    if (cachedEntry && isCacheValid(cachedEntry)) {
       console.log(`CACHE HIT: Retornando dados do cache para o número: ${fullNumber}`)
-      return NextResponse.json(phoneCache.get(fullNumber), {
+      return NextResponse.json(cachedEntry.data, {
         status: 200,
         headers: { "Access-Control-Allow-Origin": "*" },
       })
     }
-    console.log(`CACHE MISS: Buscando dados da API para o número: ${fullNumber}`)
-    // --- FIM DA VERIFICAÇÃO DE CACHE ---
 
-    // 3. Monta a URL e as opções para a nova API (RapidAPI)
-    // CORREÇÃO: Host alterado de 'whatsapp-datai' para 'whatsapp-data1' para corrigir o erro 404.
+    const now = Date.now()
+    const timeSinceLastRequest = now - lastRequestTime
+    if (timeSinceLastRequest < MIN_REQUEST_INTERVAL) {
+      const waitTime = MIN_REQUEST_INTERVAL - timeSinceLastRequest
+      console.log(`Rate limiting prevention: waiting ${waitTime}ms before API call`)
+      await delay(waitTime)
+    }
+
+    if (consecutiveRateLimits > 0) {
+      const backoffDelay = Math.min(1000 * Math.pow(2, consecutiveRateLimits), 30000) // Max 30 seconds
+      console.log(
+        `Exponential backoff: waiting ${backoffDelay}ms due to ${consecutiveRateLimits} consecutive rate limits`,
+      )
+      await delay(backoffDelay)
+    }
+
+    lastRequestTime = Date.now()
+    console.log(`CACHE MISS: Buscando dados da API para o número: ${fullNumber}`)
+
     const apiUrl = `https://whatsapp-data1.p.rapidapi.com/number/${fullNumber}`
     const apiOptions = {
       method: "GET",
       headers: {
-        // A sua chave da API deve vir de uma variável de ambiente!
         "x-rapidapi-key": process.env.RAPIDAPI_KEY!,
         "x-rapidapi-host": "whatsapp-data1.p.rapidapi.com",
       },
-      // Mantém o timeout de 10 segundos
-      signal: AbortSignal.timeout?.(10_000),
+      signal: AbortSignal.timeout?.(15_000),
     }
 
-    // 4. Faz a chamada para a nova API
     const response = await fetch(apiUrl, apiOptions)
 
-    // Se a API externa falhar, devolvemos o payload padrão com status 200
+    if (response.status === 429) {
+      consecutiveRateLimits++
+      console.error(`Rate limit hit (${consecutiveRateLimits} consecutive). Caching fallback response.`)
+
+      // Cache the fallback response for a shorter time to retry sooner
+      const rateLimitEntry: CacheEntry = {
+        data: fallbackPayload,
+        timestamp: Date.now(),
+        ttl: RATE_LIMIT_CACHE_TTL,
+      }
+      phoneCache.set(fullNumber, rateLimitEntry)
+
+      return NextResponse.json(fallbackPayload, {
+        status: 200,
+        headers: { "Access-Control-Allow-Origin": "*" },
+      })
+    }
+
     if (!response.ok) {
-      console.error(
-        `RapidAPI retornou um erro: ${response.status}`,
-        await response.text(),
-      )
+      console.error(`RapidAPI retornou um erro: ${response.status}`, await response.text())
+      const errorEntry: CacheEntry = {
+        data: fallbackPayload,
+        timestamp: Date.now(),
+        ttl: RATE_LIMIT_CACHE_TTL,
+      }
+      phoneCache.set(fullNumber, errorEntry)
       return NextResponse.json(fallbackPayload, { status: 200 })
     }
 
-    const data = await response.json()
+    consecutiveRateLimits = 0
 
-    // DEBUG: Imprime a resposta da API para você ver a estrutura
+    const data = await response.json()
     console.log("Resposta da RapidAPI:", data)
 
-    // 5. Verifica se a foto é privada ou se não veio um link válido
-    const imageUrl = data?.result
-    const isPhotoPrivate = !imageUrl || imageUrl.includes("g.gif") // A API costuma retornar 'g.gif' para fotos privadas
+    const imageUrl = data?.profilePic // Use o campo correto: profilePic
+    const isPhotoPrivate = !imageUrl || imageUrl.includes("g.gif") // A lógica de foto privada pode continuar
 
     const finalPayload = {
       success: true,
-      result: isPhotoPrivate ? fallbackPayload.result : imageUrl,
+      result: isPhotoPrivate ? fallbackPayload.result : imageUrl, // Agora usa a variável correta
       is_photo_private: isPhotoPrivate,
     }
 
-    // Armazena o resultado bem-sucedido no cache antes de retornar
-    phoneCache.set(fullNumber, finalPayload)
+    const successEntry: CacheEntry = {
+      data: finalPayload,
+      timestamp: Date.now(),
+      ttl: CACHE_TTL,
+    }
+    phoneCache.set(fullNumber, successEntry)
 
     return NextResponse.json(finalPayload, {
       status: 200,
@@ -95,7 +147,6 @@ export async function POST(request: NextRequest) {
     })
   } catch (err) {
     console.error("Erro no handler da API:", err)
-    // Nunca deixamos propagar status 500; devolvemos o fallback
     return NextResponse.json(fallbackPayload, { status: 200 })
   }
 }
