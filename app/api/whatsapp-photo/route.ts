@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
         method: "GET",
         headers: {
           Accept: "application/json",
-          Origin: "https://whatspy.chat",
+          Origin: "https://whatstalker.com/",
         },
         // timeout de 10 s (Edge Runtime aceita AbortController)
         signal: AbortSignal.timeout?.(10_000),
